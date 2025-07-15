@@ -1,11 +1,13 @@
 package com.range.fastboot.util
 
+import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Component
 import reactor.core.publisher.Flux
+import kotlin.math.log
 
 @Component
 class WrapperUtil {
-
+private val log = LoggerFactory.getLogger(WrapperUtil::class.java)
     private val os = System.getProperty("os.name").lowercase()
 
     private val fastbootCommand = if (os.contains("win")) "fastboot.exe" else "fastboot"
@@ -43,8 +45,14 @@ class WrapperUtil {
                 inputReader.forEachLine { line -> sink.next(line) }
             }
             val errorThread = Thread {
-                errorReader.forEachLine { line -> sink.next("ERR: $line") }
-            }
+              log.error(errorReader.readLine())
+                errorReader.forEachLine { line ->
+                    sink.next("ERR: $line")
+                }
+
+
+
+        }
 
             inputThread.start()
             errorThread.start()
