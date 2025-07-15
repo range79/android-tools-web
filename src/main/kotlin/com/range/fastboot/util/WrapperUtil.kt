@@ -9,11 +9,10 @@ import kotlin.math.log
 class WrapperUtil {
 private val log = LoggerFactory.getLogger(WrapperUtil::class.java)
     private val os = System.getProperty("os.name").lowercase()
+    private val fastbootCommand = if (os.contains("win")) "android-tools\\fastboot.exe" else "./android-tools/fastboot"
+    private val adbCommand = if (os.contains("win")) "android-tools\\adb.exe" else "./android-tools/adb"
 
-    private val fastbootCommand = if (os.contains("win")) "fastboot.exe" else "fastboot"
-    private val adbCommand = if (os.contains("win")) "adb.exe" else "adb"
 
-    // Normal çıktı döndürür
     private fun executeCommand(command: String, args: String): String {
         val processBuilder = ProcessBuilder(command, *args.trim().split(" ").toTypedArray())
         val process = processBuilder.start()
