@@ -3,19 +3,30 @@ package com.range.fastboot.util
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Component
 import reactor.core.publisher.Flux
-import kotlin.math.log
 
 @Component
 class WrapperUtil {
-private val log = LoggerFactory.getLogger(WrapperUtil::class.java)
+    private val log = LoggerFactory.getLogger(WrapperUtil::class.java)
     private val os = System.getProperty("os.name").lowercase()
     private val fastbootCommand = if (os.contains("win")) "android-tools\\fastboot.exe" else "./android-tools/fastboot"
     private val adbCommand = if (os.contains("win")) "android-tools\\adb.exe" else "./android-tools/adb"
 
+    private fun executeCommand(
+        deviceId: String?,
+        command: String,
+        args: String
+    ): String {
+        val baseArgs = args.trim().split(" ")
 
-    private fun executeCommand(command: String, args: String): String {
-        val processBuilder = ProcessBuilder(command, *args.trim().split(" ").toTypedArray())
+        val finalArgs = if (!deviceId.isNullOrBlank()) {
+            listOf("-s", deviceId) + baseArgs
+        } else {
+            baseArgs
+        }
+
+        val processBuilder = ProcessBuilder(command, *finalArgs.toTypedArray())
         val process = processBuilder.start()
+
         val output = process.inputStream.bufferedReader().readText()
         val error = process.errorStream.bufferedReader().readText()
 
@@ -24,18 +35,28 @@ private val log = LoggerFactory.getLogger(WrapperUtil::class.java)
         return output.ifBlank { error }
     }
 
-    fun getFastbootOutput(args: String): String {
-        return executeCommand(fastbootCommand, args)
+    fun getFastbootOutput(deviceId: String?, args: String): String {
+        return executeCommand(deviceId, fastbootCommand, args)
     }
 
-    fun getAdbOutput(args: String): String {
-        return executeCommand(adbCommand, args)
+    fun getAdbOutput(deviceId: String?, args: String): String {
+        return executeCommand(deviceId, adbCommand, args)
     }
 
-    // Canlı log stream (SSE için)
-    private fun executeCommandFlux(command: String, args: String): Flux<String> {
+    private fun executeCommandFlux(
+        deviceId: String?,
+        command: String,
+        args: String
+    ): Flux<String> {
         return Flux.create { sink ->
-            val process = ProcessBuilder(command, *args.trim().split(" ").toTypedArray()).start()
+            val baseArgs = args.trim().split(" ")
+            val finalArgs = if (!deviceId.isNullOrBlank()) {
+                listOf("-s", deviceId) + baseArgs
+            } else {
+                baseArgs
+            }
+
+            val process = ProcessBuilder(command, *finalArgs.toTypedArray()).start()
 
             val inputReader = process.inputStream.bufferedReader()
             val errorReader = process.errorStream.bufferedReader()
@@ -44,14 +65,10 @@ private val log = LoggerFactory.getLogger(WrapperUtil::class.java)
                 inputReader.forEachLine { line -> sink.next(line) }
             }
             val errorThread = Thread {
-              log.error(errorReader.readLine())
                 errorReader.forEachLine { line ->
                     sink.next("ERR: $line")
                 }
-
-
-
-        }
+            }
 
             inputThread.start()
             errorThread.start()
@@ -65,11 +82,11 @@ private val log = LoggerFactory.getLogger(WrapperUtil::class.java)
         }
     }
 
-    fun getFastbootOutputFlux(args: String): Flux<String> {
-        return executeCommandFlux(fastbootCommand, args)
+    fun getFastbootOutputFlux(deviceId: String?, args: String): Flux<String> {
+        return executeCommandFlux(deviceId, fastbootCommand, args)
     }
 
-    fun getAdbOutputFlux(args: String): Flux<String> {
-        return executeCommandFlux(adbCommand, args)
+    fun getAdbOutputFlux(deviceId: String?, args: String): Flux<String> {
+        return executeCommandFlux(deviceId, adbCommand, args)
     }
 }
