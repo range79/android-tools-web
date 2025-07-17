@@ -43,9 +43,9 @@ class DeviceDataServiceImpl(
             return false
     }
 
-    override fun getDeviceCodeName(deviceId: String): String {
+    override fun getDeviceCodeName(deviceId: String): String? {
         val output = wrapperUtil.getFastbootOutput(deviceId,"getvar product")
-
+        return Regex("product:\\s*(\\S+)").find(output)?.groupValues?.get(1)
     }
 
 
