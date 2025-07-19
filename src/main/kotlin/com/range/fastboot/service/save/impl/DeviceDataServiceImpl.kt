@@ -76,9 +76,7 @@ class DeviceDataServiceImpl(
 
     }
 
-    override fun updateDevice(id: Long) {
 
-    }
 
 
 }
