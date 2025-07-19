@@ -1,6 +1,6 @@
 package com.range.fastboot.enums
 
-enum class DeviceStatus {
+enum class FastbootDeviceStatus {
     Connected,
     Disconnected,
 

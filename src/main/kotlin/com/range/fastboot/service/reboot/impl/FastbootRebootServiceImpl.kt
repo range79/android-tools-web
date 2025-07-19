@@ -1,7 +1,7 @@
 package com.range.fastboot.service.reboot.impl
 
 import com.range.fastboot.service.reboot.FastbootRebootService
-import com.range.fastboot.util.WrapperUtil
+import com.range.common.util.WrapperUtil
 import org.springframework.stereotype.Service
 import reactor.core.publisher.Flux
 

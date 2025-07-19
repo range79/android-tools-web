@@ -1,4 +1,4 @@
-package com.range.fastboot
+package com.range
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

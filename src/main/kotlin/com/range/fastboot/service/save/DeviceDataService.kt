@@ -9,4 +9,5 @@ interface DeviceDataService {
     fun getDeviceCodeName(deviceId: String): String?
     fun getFullDevice(deviceId: String): DeviceInfoDto
     fun saveDevice(deviceId: String): DeviceInfoDto
+    fun updateDevice(id: Long)
 }

@@ -1,20 +1,19 @@
 package com.range.fastboot.service.save.impl
 
-import com.range.fastboot.domain.model.DeviceInfo
-import com.range.fastboot.domain.repository.DeviceInfoRepository
+import com.range.common.util.WrapperUtil
+import com.range.fastboot.domain.entity.FastbootDeviceInfo
+import com.range.fastboot.domain.repository.FastbootDevicesInfoRepository
 import com.range.fastboot.dto.DeviceInfoDto
-import com.range.fastboot.enums.DeviceStatus
+import com.range.fastboot.enums.FastbootDeviceStatus
 import com.range.fastboot.service.save.DeviceDataService
-import com.range.fastboot.util.CheckDevices
-import com.range.fastboot.util.WrapperUtil
+
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
 @Service
 class DeviceDataServiceImpl(
     private val wrapperUtil: WrapperUtil,
-    private val checkDevices: CheckDevices,
-    private val deviceInfoRepository: DeviceInfoRepository
+    private val fastbootDevicesInfoRepository: FastbootDevicesInfoRepository
 ): DeviceDataService {
     override fun getDevices(): List<String> {
         val output = wrapperUtil.getFastbootOutput(null, "devices")
@@ -58,22 +57,26 @@ class DeviceDataServiceImpl(
         val codename = getDeviceCodeName(deviceId)
         val isAbdDevice = getIsAbdDevice(deviceId)
         val getUnlockStatus = getUnlockStatus(deviceId)
-        val isConnected = DeviceStatus.Connected
+        val isConnected = FastbootDeviceStatus.Connected
         return DeviceInfoDto(deviceId, codename, getUnlockStatus,isAbdDevice, isConnected)
     }
     @Transactional
     override fun saveDevice(deviceId: String): DeviceInfoDto {
         val device = getFullDevice(deviceId);
-        val deviceObject = DeviceInfo(
+        val deviceObject = FastbootDeviceInfo(
             id = null,
             serial= device.serial,
             codename = device.codename,
             unlocked = device.unlocked,
             isAbDevice = device.isAbDevice,
-            deviceStatus = DeviceStatus.Connected,
+            fastbootDeviceStatus = FastbootDeviceStatus.Connected,
         )
-        deviceInfoRepository.save(deviceObject)
+        fastbootDevicesInfoRepository.save(deviceObject)
         return device
+
+    }
+
+    override fun updateDevice(id: Long) {
 
     }
 

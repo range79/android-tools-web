@@ -1,11 +1,11 @@
-package com.range.fastboot.domain.model
+package com.range.fastboot.domain.entity
 
-import com.range.fastboot.enums.DeviceStatus
+import com.range.fastboot.enums.FastbootDeviceStatus
 import jakarta.persistence.*
 
 @Table(name = "device")
 @Entity
-data class DeviceInfo (
+data class FastbootDeviceInfo (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null,
@@ -14,5 +14,5 @@ data class DeviceInfo (
     var unlocked: Boolean = false,
     var isAbDevice: Boolean = false,
     @Enumerated(EnumType.STRING)
-    var deviceStatus: DeviceStatus? = null
+    var fastbootDeviceStatus: FastbootDeviceStatus? = null
 )

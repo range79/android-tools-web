@@ -1,4 +1,4 @@
-package com.range.fastboot.util
+package com.range.common.util
 
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Component

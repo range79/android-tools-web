@@ -1,9 +1,9 @@
-package com.range.fastboot.service.reboot.impl
+package com.range.adb.reboot
 
-import com.range.fastboot.service.reboot.AdbRebootService
-import com.range.fastboot.util.WrapperUtil
+import com.range.common.util.WrapperUtil
 import org.springframework.stereotype.Service
 import reactor.core.publisher.Flux
+
 @Service
 class AdbRebootServiceImpl(
     private val wrapperUtil: WrapperUtil
