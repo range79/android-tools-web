@@ -1,5 +1,5 @@
 package com.range.adb.reboot
 
-import com.range.adb.reboot.base.RebootService
+import com.range.common.service.base.RebootService
 
-interface AdbRebootService : RebootService
+interface AdbRebootService : RebootService<Void>

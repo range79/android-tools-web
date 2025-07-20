@@ -14,5 +14,5 @@ data class FastbootDeviceInfo (
     var unlocked: Boolean = false,
     var isAbDevice: Boolean = false,
     @Enumerated(EnumType.STRING)
-    var fastbootDeviceStatus: FastbootDeviceStatus? = null
+    var fastbootDeviceStatus: FastbootDeviceStatus
 )
