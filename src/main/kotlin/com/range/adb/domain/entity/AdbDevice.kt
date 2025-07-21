@@ -1,4 +1,4 @@
-package com.range.adb.doman.entity
+package com.range.adb.domain.entity
 
 import com.range.adb.enums.AdbDeviceStatus
 import jakarta.persistence.*
