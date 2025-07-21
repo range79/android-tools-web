@@ -80,17 +80,50 @@ Then, open your browser and navigate to `http://localhost:8080` to access the we
 
 ---
 
-## 🧩 Roadmap
 
-* [x] Basic ADB / Fastboot integration
-* [x] Web interface prototype
-* [ ] Predefined command support
-* [ ] Command history storage
-* [ ] User authentication and access control
-* [ ] Multi-device support
-* [ ] Advanced error handling
+## 🧩 Project Roadmap
 
----
+* [x] **Basic ADB / Fastboot Integration**
+  Established the core infrastructure for communicating with Android devices using ADB and Fastboot. Enables basic command execution and device recognition.
+
+* [x] **Fastboot Reboot API**
+  Implemented a REST API endpoint to reboot devices in fastboot mode directly through the backend service.
+
+* [x] **Fastboot Device Saving**
+  Added functionality to save fastboot device information such as serial number, codename, unlock status, and device type into the database.
+
+* [ ] **ADB Reboot API**
+  Developed a REST API to trigger device reboots using ADB, allowing remote reboot functionality.
+
+* [ ] **ADB ROM Installation**
+  To be implemented: ability to install custom ROMs or image files (ZIP or IMG) to a device using ADB commands via the API.
+
+* [ ] **Fastboot Image Flashing**
+  To be implemented: flash specific partitions (e.g., boot, system, recovery) using Fastboot and uploaded image files.
+
+* [ ] **Fastboot Image Removal**
+  To be implemented: remove or erase specific device partitions (e.g., userdata, cache) through Fastboot via API.
+
+* [ ] **Web Interface Prototype**
+  A basic web UI will be developed to allow users to view connected devices, send commands, and monitor activity through a user-friendly interface.
+
+* [ ] **Predefined Command Execution**
+  Frequently used ADB and Fastboot commands will be available through predefined buttons or shortcuts in the API and frontend.
+
+* [ ] **Command History Logging**
+  A full history of executed commands will be recorded per device and user, with timestamps for audit and debugging purposes.
+
+* [ ] **User Authentication & Access Control**
+  Implement secure login and authorization with token-based authentication and role-based access control to restrict features.
+
+* [ ] **Multi-Device Support**
+  Add support for managing and interacting with multiple connected devices simultaneously, with proper device isolation.
+
+* [ ] **Advanced Error Handling**
+  Improve error detection and handling for device communication issues, with clear error responses, logging, and graceful fallbacks.
+
+
+
 
 ## 🧑‍💻 Contributing
 

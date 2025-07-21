@@ -14,7 +14,7 @@ data class AdbDevice (
     var unlocked: Boolean = false,
     var isAbDevice: Boolean = false,
     @Enumerated(EnumType.STRING)
-    var AdbDeviceStatus: AdbDeviceStatus,
+    var status: AdbDeviceStatus = AdbDeviceStatus.Disconnected,
 )
 
 
