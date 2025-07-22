@@ -13,6 +13,4 @@ interface SaveDevicesApi {
     fun scanDevices() : ResponseEntity<List<String>>
     @PostMapping("/saveDevice/{id}")
     fun saveDevice(@PathVariable id:String): ResponseEntity<FastbootDeviceResponseDto>
-
-
 }

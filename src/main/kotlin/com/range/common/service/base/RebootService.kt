@@ -1,9 +1,8 @@
 package com.range.common.service.base
 
+import com.range.common.enums.RebootOptions
+
 
 interface RebootService<T>{
-     fun reboot(id: Long):T
-     fun rebootFastboot(id: Long):T
-     fun rebootFastbootD(id: Long):T
-     fun rebootRecovery(id: Long):T
+     fun reboot(id: Long,option: RebootOptions):T
 }

@@ -2,6 +2,7 @@ package com.range.fastboot.service.remove.impl
 
 import com.range.fastboot.dto.FastbootDeviceResponseDto
 import com.range.fastboot.enums.FastbootDeviceStatus
+import com.range.fastboot.enums.PartitionOptions
 import com.range.fastboot.service.helper.FastbootCommandHelper
 import com.range.fastboot.service.remove.FastbootRemoveService
 import org.springframework.stereotype.Service
@@ -10,11 +11,11 @@ import org.springframework.stereotype.Service
 class FastbootRemoveServiceImpl (
 private val helper: FastbootCommandHelper
 ): FastbootRemoveService {
-    override fun removePartition(id: Long,partition: String): FastbootDeviceResponseDto {
+    override fun removePartition(id: Long, partition: PartitionOptions): FastbootDeviceResponseDto {
         return helper.executeCommand(
             id=id,
             expectedOutputContains = "erasing",
-            command= "erase $partition",
+            command= "erase ${partition.toLower()}",
             updateStatus = FastbootDeviceStatus.Connected
         )
     }
