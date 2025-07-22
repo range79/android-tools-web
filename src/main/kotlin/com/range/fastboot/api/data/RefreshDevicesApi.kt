@@ -1,4 +1,4 @@
-package com.range.fastboot.api
+package com.range.fastboot.api.data
 
 import com.range.fastboot.domain.entity.FastbootDeviceInfo
 import org.springframework.http.ResponseEntity
@@ -11,4 +11,5 @@ interface RefreshDevicesApi{
     @GetMapping("/all")
     fun getAllSavedDevices(): ResponseEntity<List<FastbootDeviceInfo>>
     @GetMapping("/{id}")
-    fun getDevice(@PathVariable id: Long): ResponseEntity<FastbootDeviceInfo>}
+    fun getDevice(@PathVariable id: Long): ResponseEntity<FastbootDeviceInfo>
+}

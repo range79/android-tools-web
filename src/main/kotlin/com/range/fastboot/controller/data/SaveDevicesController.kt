@@ -1,6 +1,6 @@
-package com.range.fastboot.controller
+package com.range.fastboot.controller.data
 
-import com.range.fastboot.api.SaveDevicesApi
+import com.range.fastboot.api.data.SaveDevicesApi
 import com.range.fastboot.dto.FastbootDeviceResponseDto
 import com.range.fastboot.service.save.DeviceDataService
 import org.springframework.http.ResponseEntity
@@ -14,7 +14,7 @@ class SaveDevicesController(
      return ResponseEntity.ok(service.scanDevices())
     }
 
-    override fun saveDevice(id: String): ResponseEntity<FastbootDeviceResponseDto>  {
+    override fun saveDevice(id: String): ResponseEntity<FastbootDeviceResponseDto> {
         return ResponseEntity.ok(service.saveDevice(id))
     }
 }

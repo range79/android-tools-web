@@ -1,4 +1,4 @@
-package com.range.fastboot.api
+package com.range.fastboot.api.data
 
 import com.range.fastboot.dto.FastbootDeviceResponseDto
 import org.springframework.http.ResponseEntity

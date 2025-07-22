@@ -1,6 +1,6 @@
-package com.range.fastboot.controller
+package com.range.fastboot.controller.data
 
-import com.range.fastboot.api.RefreshDevicesApi
+import com.range.fastboot.api.data.RefreshDevicesApi
 import com.range.fastboot.domain.entity.FastbootDeviceInfo
 import com.range.fastboot.service.devices.DeviceService
 import org.springframework.http.ResponseEntity

@@ -10,6 +10,4 @@ import org.springframework.web.bind.annotation.RequestMapping
 @RequestMapping()
 interface FastbootRebootDeviceApi {
     @GetMapping("/fastboot/{id}/reboot/{option}")
-    fun reboot(@PathVariable id : Long,@PathVariable option: RebootOptions): ResponseEntity<FastbootDeviceResponseDto>
-
-    }
+    fun reboot(@PathVariable id : Long,@PathVariable option: RebootOptions): ResponseEntity<FastbootDeviceResponseDto>}
