@@ -4,13 +4,13 @@ import com.range.fastboot.domain.entity.FastbootDeviceInfo
 import com.range.fastboot.domain.repository.FastbootDevicesInfoRepository
 import com.range.fastboot.exception.FastbootDeviceNotFoundException
 import com.range.fastboot.service.devices.DeviceService
-import com.range.fastboot.util.CheckDevices
+import com.range.fastboot.util.CheckFastbootDevices
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 @Service
 class DeviceServiceImpl(
     private val fastbootRepository: FastbootDevicesInfoRepository,
-    private val checkDevices: CheckDevices
+    private val checkFastbootDevices: CheckFastbootDevices
 ): DeviceService {
     @Transactional
     override fun getAllDevices(): List<FastbootDeviceInfo> {
@@ -31,7 +31,7 @@ class DeviceServiceImpl(
     }
 
     private fun fastbootChecker(fastbootDevice: FastbootDeviceInfo): FastbootDeviceInfo {
-        val currentStatus = checkDevices.checkNow(fastbootDevice.serial)
+        val currentStatus = checkFastbootDevices.checkNow(fastbootDevice.serial)
         if (fastbootDevice.fastbootDeviceStatus != currentStatus) {
             fastbootDevice.fastbootDeviceStatus = currentStatus
             fastbootRepository.save(fastbootDevice)

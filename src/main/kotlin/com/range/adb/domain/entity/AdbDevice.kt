@@ -9,10 +9,8 @@ data class AdbDevice (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null,
-    var serial: String? = null,
+    var serial: String,
     var codename: String? = null,
-    var unlocked: Boolean = false,
-    var isAbDevice: Boolean = false,
     @Enumerated(EnumType.STRING)
     var status: AdbDeviceStatus = AdbDeviceStatus.Disconnected,
 )

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component
 import kotlin.coroutines.CoroutineContext
 
 @Component
-class CheckDevices(
+class CheckFastbootDevices(
     private val wrapperUtil: WrapperUtil
 ): CoroutineScope {
     override val coroutineContext: CoroutineContext = Dispatchers.Default
