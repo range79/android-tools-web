@@ -1,3 +1,6 @@
 package com.range.fastboot.exception
 
-class FastbootDeviceNotFoundException(message: String):RuntimeException(message)
+import com.range.common.AbstractExceptionHandler
+import org.springframework.http.HttpStatus
+
+class FastbootDeviceNotFoundException(message: String): AbstractExceptionHandler(message, HttpStatus.NOT_FOUND)

@@ -1,4 +1,7 @@
 package com.range.adb.exception
 
-class AdbDeviceNotFoundException(msg:String):RuntimeException(msg) {
+import com.range.common.AbstractExceptionHandler
+import org.springframework.http.HttpStatus
+
+class AdbDeviceNotFoundException(msg:String): AbstractExceptionHandler(msg, HttpStatus.NOT_FOUND) {
 }
