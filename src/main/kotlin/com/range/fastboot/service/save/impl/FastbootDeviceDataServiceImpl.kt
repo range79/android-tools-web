@@ -5,15 +5,15 @@ import com.range.fastboot.domain.entity.FastbootDeviceInfo
 import com.range.fastboot.domain.repository.FastbootDevicesInfoRepository
 import com.range.fastboot.dto.FastbootDeviceResponseDto
 import com.range.fastboot.enums.FastbootDeviceStatus
-import com.range.fastboot.service.save.DeviceDataService
+import com.range.fastboot.service.save.FastbootDeviceDataService
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
 @Service
-class DeviceDataServiceImpl(
+class FastbootDeviceDataServiceImpl(
     private val wrapperUtil: WrapperUtil,
     private val fastbootDevicesInfoRepository: FastbootDevicesInfoRepository
-): DeviceDataService {
+): FastbootDeviceDataService {
     override fun scanDevices(): List<String> {
         val output = wrapperUtil.getFastbootOutput(null, "devices")
         return output.lines()

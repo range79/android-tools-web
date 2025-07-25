@@ -2,7 +2,7 @@ package com.range.fastboot.service.save
 
 import com.range.fastboot.dto.FastbootDeviceResponseDto
 
-interface DeviceDataService {
+interface FastbootDeviceDataService {
     fun scanDevices(): List<String>
     fun getUnlockStatus(deviceId: String): Boolean
     fun getIsAbdDevice(deviceId: String): Boolean

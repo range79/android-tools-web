@@ -11,6 +11,7 @@ data class AdbDevice (
     var id: Long? = null,
     var serial: String,
     var codename: String? = null,
+    var androidVersion: String? = null,
     @Enumerated(EnumType.STRING)
     var status: AdbDeviceStatus = AdbDeviceStatus.Disconnected,
 )
