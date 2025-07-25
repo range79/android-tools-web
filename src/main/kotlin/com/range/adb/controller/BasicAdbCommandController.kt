@@ -1,7 +1,7 @@
 package com.range.adb.controller
 
 import com.range.adb.api.BasicAdbCommandApi
-import com.range.adb.dto.AdbDeviceDto
+import com.range.adb.dto.AdbDeviceResponseDto
 import com.range.adb.service.reboot.BasicAdbCommandsService
 import com.range.common.enums.RebootOptions
 import org.springframework.http.ResponseEntity
@@ -14,7 +14,7 @@ class BasicAdbCommandController(
     override fun reboot(
         id: Long,
         option: RebootOptions
-    ): ResponseEntity<AdbDeviceDto> {
+    ): ResponseEntity<AdbDeviceResponseDto> {
        return ResponseEntity.ok(basicCommandsService.reboot(id,option))
     }
 }

@@ -2,7 +2,7 @@ package com.range.adb.service.helper
 
 import com.range.adb.domain.entity.AdbDevice
 import com.range.adb.domain.repository.AdbDeviceRepository
-import com.range.adb.dto.AdbDeviceDto
+import com.range.adb.dto.AdbDeviceResponseDto
 import com.range.adb.enums.AdbDeviceStatus
 import com.range.adb.exception.AdbDeviceNotFoundException
 import com.range.adb.util.CheckAdbDevice
@@ -17,7 +17,7 @@ class AdbCommandHelper(
     private val repo: AdbDeviceRepository,
     private val checker: CheckAdbDevice,
     private val wrapperUtil: WrapperUtil
-): CommandHelper<AdbDevice, AdbDeviceDto, AdbDeviceStatus > {
+): CommandHelper<AdbDevice, AdbDeviceResponseDto, AdbDeviceStatus > {
         @Transactional(readOnly = true)
         override fun getDeviceOrThrow(id: Long): AdbDevice  {
             return repo.findById(id).orElseThrow {
@@ -37,7 +37,7 @@ class AdbCommandHelper(
             expectedOutputContains: String?,
             command: String,
             updateStatus: AdbDeviceStatus?
-        ): AdbDeviceDto {
+        ): AdbDeviceResponseDto {
 
             val device = getDeviceOrThrow(id)
             checkDeviceIsAlive(device.serial)
@@ -53,7 +53,7 @@ class AdbCommandHelper(
                 repo.save(device)
             }
 
-            return AdbDeviceDto(device.serial,
+            return AdbDeviceResponseDto(device.serial,
                 device.status)
         }
 

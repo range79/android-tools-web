@@ -1,6 +1,6 @@
 package com.range.adb.service.reboot.impl
 
-import com.range.adb.dto.AdbDeviceDto
+import com.range.adb.dto.AdbDeviceResponseDto
 import com.range.adb.enums.AdbDeviceStatus
 import com.range.adb.service.helper.AdbCommandHelper
 import com.range.adb.service.reboot.BasicAdbCommandsService
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service
 class BasicAdbCommandsServiceImpl(
     private val helper: AdbCommandHelper
 ): BasicAdbCommandsService {
-    override fun reboot(id: Long, option: RebootOptions): AdbDeviceDto {
+    override fun reboot(id: Long, option: RebootOptions): AdbDeviceResponseDto {
         return helper.executeCommand(
             id=id,
             expectedOutputContains = "Rebooting",
