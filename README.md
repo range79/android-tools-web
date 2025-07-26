@@ -101,29 +101,6 @@ Then, open your browser and navigate to `http://localhost:8080/swagger-ui/index.
 * [x] **Advanced Error Handling**
   Improve error detection and handling for device communication issues, with clear error responses, logging, and graceful fallbacks.
 
-* [ ] **ADB ROM Installation**
-  To be implemented: ability to install custom ROMs or image files (ZIP or IMG) to a device using ADB commands via the API.
-
-* [ ] **Fastboot Image Flashing**
-  To be implemented: flash specific partitions (e.g., boot, system, recovery) using Fastboot and uploaded image files.
-
-
-* [ ] **Web Interface Prototype**
-  A basic web UI will be developed to allow users to view connected devices, send commands, and monitor activity through a user-friendly interface.
-
-* [ ] **Predefined Command Execution**
-  Frequently used ADB and Fastboot commands will be available through predefined buttons or shortcuts in the API and frontend.
-
-* [ ] **Command History Logging**
-  A full history of executed commands will be recorded per device and user, with timestamps for audit and debugging purposes.
-
-* [ ] **User Authentication & Access Control**
-  Implement secure login and authorization with token-based authentication and role-based access control to restrict features.
-
-* [ ] **Multi-Device Support**
-  Add support for managing and interacting with multiple connected devices simultaneously, with proper device isolation.
-
-
 
 
 
