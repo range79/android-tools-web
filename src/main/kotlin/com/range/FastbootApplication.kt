@@ -10,7 +10,7 @@ class FastbootApplication
 
 fun main(args: Array<String>) {
 
-    print(RebootOptions.Fastboot.toString())
+    print(RebootOptions.Fastboot.toLower())
 
 
     runApplication<FastbootApplication>(*args)
