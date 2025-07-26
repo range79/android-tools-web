@@ -45,7 +45,7 @@ class AdbCommandHelper(
             val output = wrapperUtil.getAdbOutput(device.serial, command)
 
             if (expectedOutputContains != null && !output.contains(expectedOutputContains, ignoreCase = true)) {
-                throw FastbootDeviceNotFoundException("Fastboot command failed. Output: $output")
+                throw AdbDeviceNotFoundException("Adb command failed. Output: $output")
             }
 
             if (updateStatus != null) {
