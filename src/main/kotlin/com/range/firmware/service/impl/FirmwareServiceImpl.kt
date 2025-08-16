@@ -1,10 +1,11 @@
-package com.range.firmware.service
+package com.range.firmware.service.impl
 
 import com.range.firmware.domain.model.Firmware
 import com.range.firmware.domain.repository.FirmwareRepository
 import com.range.firmware.enum.FirmwareType
 import com.range.firmware.exception.FirmwareNotFoundException
 import com.range.firmware.exception.PathNotFoundException
+import com.range.firmware.service.FirmwareService
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
@@ -26,18 +27,16 @@ class FirmwareServiceImpl(
     }
     @Transactional(readOnly = true)
     override fun findById(id: Long): Firmware {
-        return firmwareRepository.findById(id).orElseThrow{
-            FirmwareNotFoundException("rom not found on id $id")
-        }
+        return find(id)
 
     }
     @Transactional
     override fun deleteById(id: Long) {
-        return firmwareRepository.delete(findById(id))
+        return firmwareRepository.delete(find(id))
 
     }
     @Transactional
-    override fun saveRom(multipartFile: MultipartFile,firmwareType: FirmwareType) {
+    override fun saveRom(multipartFile: MultipartFile, firmwareType: FirmwareType) {
        val jarDir : File = if (appDevMode) {
 
            val classPaths = System.getProperty("java.class.path").split(File.pathSeparator)
@@ -91,7 +90,14 @@ class FirmwareServiceImpl(
         firmwareRepository.save(firmware)
     }
 
-    private fun find(id: Long): Firmware{
+    override fun findByType(
+        firmwareType: FirmwareType,
+        pageable: Pageable
+    ): Page<Firmware> {
+        return firmwareRepository.findAllByFirmwareType(pageable, firmwareType)
+    }
+
+    private fun find(id: Long): Firmware {
         return firmwareRepository.findById(id).orElseThrow{
             FirmwareNotFoundException("rom not found on id $id")
         }

@@ -11,4 +11,5 @@ interface FirmwareService {
     fun findById(id: Long):Firmware
     fun deleteById(id: Long)
     fun saveRom(multipartFile: MultipartFile,firmwareType: FirmwareType)
+    fun findByType(firmwareType: FirmwareType,pageable: Pageable): Page<Firmware>
 }

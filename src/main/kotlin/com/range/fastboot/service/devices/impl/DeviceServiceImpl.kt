@@ -5,6 +5,8 @@ import com.range.fastboot.domain.repository.FastbootDevicesInfoRepository
 import com.range.fastboot.exception.FastbootDeviceNotFoundException
 import com.range.fastboot.service.devices.DeviceService
 import com.range.fastboot.util.CheckFastbootDevices
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 @Service
@@ -13,12 +15,10 @@ class DeviceServiceImpl(
     private val checkFastbootDevices: CheckFastbootDevices
 ): DeviceService {
     @Transactional
-    override fun getAllDevices(): List<FastbootDeviceInfo> {
-        val  fastbootDevices =fastbootRepository.findAll()
+    override fun getAllDevices(pageable: Pageable): Page<FastbootDeviceInfo> {
+        val  fastbootDevices =fastbootRepository.findAll(pageable)
         val updatedDevices = fastbootDevices.map { device ->
-
             fastbootChecker(device)
-
         }
         return updatedDevices
     }
