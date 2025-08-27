@@ -19,11 +19,17 @@ interface FirmwareApi {
     fun findById(@PathVariable id: Long):Firmware
     @DeleteMapping("/{id}")
     fun deleteById(@PathVariable id: Long)
-    @PostMapping(consumes = arrayOf("multipart/form-data"))
-    fun saveRom( @Parameter(description = "ROM dosyası", required = true, content = [Content(mediaType = "multipart/form-data")])
+    @PostMapping("/rom")
+    fun saveRom(
+        @Parameter(
+            description = "ROM dosyası",
+            required = true,
+            content = [Content(mediaType = "multipart/form-data")]
+        )
+        @RequestPart("file") multipartFile: MultipartFile,
 
-                 @RequestParam("file") multipartFile: MultipartFile,
-                 @RequestParam("firmwareType") firmwareType: FirmwareType)
-
+        @Parameter(description = "Firmware type", required = true)
+        @RequestParam("firmwareType") firmwareType: FirmwareType
+    )
 
 }
