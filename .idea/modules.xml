@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/android-tools-web.iml" filepath="$PROJECT_DIR$/.idea/android-tools-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/fastboot.iml" filepath="$PROJECT_DIR$/.idea/modules/fastboot.iml" />
     </modules>
   </component>
 </project>

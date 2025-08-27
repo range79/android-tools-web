@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.media.Content
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.data.web.PageableDefault
+import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.multipart.MultipartFile
 
@@ -19,12 +20,12 @@ interface FirmwareApi {
     fun findById(@PathVariable id: Long):Firmware
     @DeleteMapping("/{id}")
     fun deleteById(@PathVariable id: Long)
-    @PostMapping("/rom")
+    @PostMapping("/rom/upload", consumes = [MediaType.MULTIPART_FORM_DATA_VALUE])
     fun saveRom(
         @Parameter(
-            description = "ROM dosyası",
+            description = "Rom file",
             required = true,
-            content = [Content(mediaType = "multipart/form-data")]
+            content = [Content(mediaType = MediaType.MULTIPART_FORM_DATA_VALUE)]
         )
         @RequestPart("file") multipartFile: MultipartFile,
 
