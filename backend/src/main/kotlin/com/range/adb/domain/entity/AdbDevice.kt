@@ -4,7 +4,7 @@ import com.range.adb.enums.AdbDeviceStatus
 import jakarta.persistence.*
 
 @Entity
-@Table(name = "device")
+@Table(name = "adb_devices")
 data class AdbDevice (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

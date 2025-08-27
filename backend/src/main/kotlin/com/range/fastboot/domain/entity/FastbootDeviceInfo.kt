@@ -3,7 +3,7 @@ package com.range.fastboot.domain.entity
 import com.range.fastboot.enums.FastbootDeviceStatus
 import jakarta.persistence.*
 
-@Table(name = "device")
+@Table(name = "fastboot_devices")
 @Entity
 data class FastbootDeviceInfo (
     @Id
