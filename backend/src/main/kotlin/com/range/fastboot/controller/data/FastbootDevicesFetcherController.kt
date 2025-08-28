@@ -19,4 +19,8 @@ class FastbootDevicesFetcherController(
 
     override fun getDevice(id: Long): FastbootDeviceInfo {
       return service.getOneDevice(id)    }
+
+    override fun getAllSavedDevices(): List<FastbootDeviceInfo> {
+        return service.getAllDevicesList()
+    }
 }

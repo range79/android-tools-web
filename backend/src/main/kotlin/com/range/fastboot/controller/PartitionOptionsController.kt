@@ -11,6 +11,6 @@ import kotlin.enums.EnumEntries
 class PartitionOptionsController {
     @GetMapping("/all")
     fun partitionOptions(): EnumEntries<PartitionOptions> {
-    return PartitionOptions.entries
+        return PartitionOptions.entries
     }
 }
