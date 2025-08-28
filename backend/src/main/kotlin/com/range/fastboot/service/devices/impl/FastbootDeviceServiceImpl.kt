@@ -30,6 +30,11 @@ class FastbootDeviceServiceImpl(
         return fastbootChecker(fastbootDevice)
     }
 
+    override fun getAllDevicesList(): List<FastbootDeviceInfo> {
+        val devices= fastbootRepository.findAll().map { fastboot->fastbootChecker(fastboot) }
+        return devices
+    }
+
     private fun fastbootChecker(fastbootDevice: FastbootDeviceInfo): FastbootDeviceInfo {
         val currentStatus = checkFastbootDevices.checkNow(fastbootDevice.serial)
         if (fastbootDevice.fastbootDeviceStatus != currentStatus) {

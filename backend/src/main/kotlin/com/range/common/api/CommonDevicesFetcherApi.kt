@@ -11,4 +11,6 @@ interface CommonDevicesFetcherApi <T>{
     fun getAllSavedDevices(  @PageableDefault(size = 20, sort = ["id"]) pageable: Pageable): Page<T>
     @GetMapping("/{id}")
     fun getDevice(@PathVariable id: Long):T
+    @GetMapping("/list")
+    fun getAllSavedDevices():List<T>
 }

@@ -6,4 +6,5 @@ import org.springframework.data.domain.Pageable
 interface DeviceServiceBase <T>{
     fun getAllDevices(pageable: Pageable): Page<T>
     fun getOneDevice(id: Long): T
+    fun getAllDevicesList():List<T>
 }

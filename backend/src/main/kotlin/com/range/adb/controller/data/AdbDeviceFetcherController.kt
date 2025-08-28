@@ -18,4 +18,8 @@ class AdbDeviceFetcherController(
     override fun getDevice(id: Long): AdbDevice {
         return service.getOneDevice(id)
     }
+
+    override fun getAllSavedDevices(): List<AdbDevice> {
+        return service.getAllDevicesList()
+    }
 }

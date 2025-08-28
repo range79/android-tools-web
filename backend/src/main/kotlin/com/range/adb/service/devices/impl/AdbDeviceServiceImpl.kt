@@ -24,12 +24,18 @@ class AdbDeviceServiceImpl(
 
 
     override fun getOneDevice(id: Long): AdbDevice {
-        val adb_device =adbDeviceRepository
+        val adbDevice =adbDeviceRepository
             .findById(id)
             .orElseThrow{AdbDeviceNotFoundException("Device with id $id Not found")}
-        return checkAdbDevice(adb_device)
+        return checkAdbDevice(adbDevice)
 
     }
+
+    override fun getAllDevicesList(): List<AdbDevice> {
+        val device = adbDeviceRepository.findAll().map { device->  checkAdbDevice(device) }
+        return device
+    }
+
     private fun checkAdbDevice(adbDevice: AdbDevice): AdbDevice {
         val currentStatus = checkAdbDevice.checkNow(adbDevice.serial)
         if (adbDevice.status!= currentStatus) {
