@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a9d30ef4-e093-49c0-8063-07780e5a7d72" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/CONTRIBUTORS.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -69,6 +70,7 @@
     &quot;Spring Boot.FastbootApplication.executor&quot;: &quot;Run&quot;,
     &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/range/workdir/rpms-server&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -116,6 +118,10 @@
       <workItem from="1756379500687" duration="2669000" />
       <workItem from="1756389419099" duration="1541000" />
       <workItem from="1756392696376" duration="727000" />
+      <workItem from="1756402081556" duration="542000" />
+      <workItem from="1756404466835" duration="298000" />
+      <workItem from="1756407299632" duration="68000" />
+      <workItem from="1756407387224" duration="37000" />
     </task>
     <servers />
   </component>

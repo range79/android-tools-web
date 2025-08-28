@@ -120,6 +120,10 @@ This project is licensed under the [GNU General Public License v3.0](LICENSE).
 
 ---
 
+## For Contributors click [here](./CONTRIBUTORS.md)
+
+---
+
 ## 📫 Contact
 
 For any questions, suggestions, or contributions, please reach out via [darkrange6@gmail.com](mailto:darkrange6@gmail.com).
