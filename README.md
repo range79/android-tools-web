@@ -33,6 +33,7 @@
 - 📝 Modern codebase written in Kotlin
 
 ---
+## [You can follow the commits from this Discord channel.](https://discord.gg/pbG2E9Qkqv)
 
 ## 🛠️ Technologies Used
 

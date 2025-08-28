@@ -4,19 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9d30ef4-e093-49c0-8063-07780e5a7d72" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/adb/api/AdbFirmwareFlasherApi.kt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/adb/api/AdbFirmwareFlasherApi.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/adb/controller/AdbFirmwareFlasherController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/adb/controller/AdbFirmwareFlasherController.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/adb/service/flasher/AdbFirmwareFlasher.kt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/adb/service/flasher/AdbFirmwareFlasher.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/firmware/api/FirmwareApi.kt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/firmware/api/FirmwareApi.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/firmware/controller/FirmwareController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/firmware/controller/FirmwareController.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/firmware/domain/model/Firmware.kt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/firmware/domain/model/Firmware.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/firmware/domain/repository/FirmwareRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/firmware/domain/repository/FirmwareRepository.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/firmware/service/FirmwareService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/firmware/service/FirmwareService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/firmware/service/impl/FirmwareServiceImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/firmware/service/impl/FirmwareServiceImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
-    </list>
+    <list default="true" id="a9d30ef4-e093-49c0-8063-07780e5a7d72" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -111,7 +99,7 @@
       <workItem from="1756310369737" duration="288000" />
       <workItem from="1756325437471" duration="642000" />
       <workItem from="1756327397086" duration="985000" />
-      <workItem from="1756340195416" duration="640000" />
+      <workItem from="1756340195416" duration="1755000" />
     </task>
     <servers />
   </component>
