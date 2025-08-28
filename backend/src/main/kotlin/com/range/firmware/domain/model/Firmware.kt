@@ -6,13 +6,14 @@ import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
 import jakarta.persistence.Table
+import java.util.UUID
 
 @Entity
 @Table(name = "rom")
 data class Firmware (
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Long?=null,
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    var id: UUID?=null,
     var name: String,
     var filepath: String,
     var firmwareType: FirmwareType

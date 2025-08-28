@@ -7,13 +7,14 @@ import com.range.common.exception.WrongFirmwareTypeException
 import com.range.firmware.enum.FirmwareType
 import com.range.firmware.service.FirmwareService
 import org.springframework.stereotype.Service
+import java.util.UUID
 
 @Service
 class AdbFirmwareFlasher (
     private val firmwareService: FirmwareService,
     private val adbCommandHelper: AdbCommandHelper
 ){
-    fun install(firmwareId: Long, deviceId: Long): AdbDeviceResponseDto {
+    fun install(firmwareId: UUID, deviceId: Long): AdbDeviceResponseDto {
         val firmware =firmwareService.findById(firmwareId)
         if (firmware.firmwareType!= FirmwareType.ADB_ROM|| firmware.firmwareType!= FirmwareType.UPDATE_ZIP){
             throw WrongFirmwareTypeException("FirmwareType ${firmware.firmwareType} not supported on adb installation")

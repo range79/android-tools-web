@@ -10,6 +10,7 @@ import org.springframework.data.web.PageableDefault
 import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.multipart.MultipartFile
+import java.util.UUID
 
 @RequestMapping("/firmware")
 interface FirmwareApi {
@@ -17,9 +18,9 @@ interface FirmwareApi {
     fun findAll(
         @PageableDefault(size = 20, sort = ["id"]) pageable: Pageable): Page<Firmware>
     @GetMapping("/{id}")
-    fun findById(@PathVariable id: Long):Firmware
+    fun findById(@PathVariable id: UUID):Firmware
     @DeleteMapping("/{id}")
-    fun deleteById(@PathVariable id: Long)
+    fun deleteById(@PathVariable id: UUID)
     @PostMapping("/rom/upload", consumes = [MediaType.MULTIPART_FORM_DATA_VALUE])
     fun saveRom(
         @Parameter(

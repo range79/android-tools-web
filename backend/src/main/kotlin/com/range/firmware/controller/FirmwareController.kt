@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.multipart.MultipartFile
+import java.util.UUID
 
 @RestController
 class FirmwareController(
@@ -18,11 +19,12 @@ class FirmwareController(
         return firmwareService.findAll(pageable)
     }
 
-    override fun findById(id: Long): Firmware {
+    override fun findById(id: UUID): Firmware {
         return firmwareService.findById(id)
     }
 
-    override fun deleteById(id: Long) {
+    override fun deleteById(id: UUID) {
+
         return firmwareService.deleteById(id)
     }
 
