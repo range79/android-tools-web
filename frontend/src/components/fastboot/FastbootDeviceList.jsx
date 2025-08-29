@@ -46,9 +46,9 @@ const FastbootDeviceList = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {fastbootDeviceList.length > 0 ? (
-                                fastbootDeviceList.map((device, index) => (
-                                    <tr key={index} className="border-t border-zinc-700 hover:bg-zinc-700/50 transition-colors duration-200">
+                            {(fastbootDeviceList?.length ?? 0) > 0 ? (
+                                fastbootDeviceList.map((device) => (
+                                    <tr key={device} className="border-t border-zinc-700 hover:bg-zinc-700/50 transition-colors duration-200">
                                         <td className="px-4 py-3 text-zinc-300">{index + 1}</td>
                                         <td className="px-4 py-3 text-zinc-300">{device}</td>
                                         <td><button className='bg-green-600 text-slate-300 text-center rounded-lg py-1 px-2 w-20' onClick={() => handleSave(device)}>Save</button></td>
@@ -56,7 +56,7 @@ const FastbootDeviceList = () => {
                                 ))
                             ) : (
                                 <tr>
-                                    <td colSpan="2" className="px-4 py-3 text-center text-zinc-400">
+                                    <td colSpan="3" className="px-4 py-3 text-center text-zinc-400">
                                         No ADB Devices found.
                                     </td>
                                 </tr>

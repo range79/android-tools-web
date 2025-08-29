@@ -16,7 +16,7 @@ import { Toaster } from 'react-hot-toast'
 function App() {
 
   return (
-    <>
+    <div className='bg-zinc-900'>
     <Toaster position='top-right'/>
         <Routes>
           <Route path='/' element={<FirmwareList />} />
@@ -31,7 +31,7 @@ function App() {
           <Route path='/adb/devices/all' element={<AdbAllDevices />} />
           <Route path='*' element={<PageNotFound />} />
         </Routes>
-    </>
+    </div>
   )
 }
 
