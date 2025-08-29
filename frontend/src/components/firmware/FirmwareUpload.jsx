@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { uploadFirmware } from "../../api/firmware.js";
 import Sidebar from '../Sidebar.jsx';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 const FirmwareUpload = () => {
   const [firmwareType, setFirmwareType] = useState('');
@@ -16,7 +17,7 @@ const FirmwareUpload = () => {
     setLoading(true);
     try {
       await uploadFirmware(firmwareType, file);
-      toast.success("Upload successfull!");
+      await toast.success("Upload successful! Refresh the page.");
       setFirmwareType('');
       setFile(null);
     } catch (error) {

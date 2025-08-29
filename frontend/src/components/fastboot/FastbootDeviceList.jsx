@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { saveDevice, scanDevices } from "../../api/fastboot.js";
 import Sidebar from '../Sidebar.jsx';
+import toast from 'react-hot-toast';
 
 
 const FastbootDeviceList = () => {
@@ -11,7 +12,7 @@ const FastbootDeviceList = () => {
         const fetchData = async () => {
             try {
                 const res = await scanDevices();
-                setFastbootDeviceList(res.data);
+                setFastbootDeviceList(res);
             } catch (err) {
                 console.error("Fastboot fetch error:", err);
             }
@@ -22,6 +23,7 @@ const FastbootDeviceList = () => {
     const handleSave = async (id) => {
         try {
             await saveDevice(id);
+            toast.success("Device saved successfully!");
         } catch (error) {
             console.error("Save device error :", error);
         };

@@ -4,7 +4,8 @@ import Sidebar from '../Sidebar';
 import { useNavigate } from 'react-router-dom';
 import { flashFirmware, getDeviceList } from '../../api/adb';
 import { flashFastbootDevice, getFastbootDeviceList, getPartitionOptions } from '../../api/fastboot';
-import {Trash2Icon} from "lucide-react";
+import { Trash2Icon } from "lucide-react";
+import toast from "react-hot-toast";
 
 
 const FirmwareList = () => {
@@ -18,7 +19,7 @@ const FirmwareList = () => {
 
   const [selectedDeviceId, setSelectedDeviceId] = useState('');
   const [partitionOptions, setPartitionOptions] = useState([]);
-  
+
   const navigate = useNavigate();
 
   // Fetch firmware list on initial component mount
@@ -85,6 +86,7 @@ const FirmwareList = () => {
     try {
       await deleteFirmware(id);
       setFirmwareList(firmwareList.filter(f => f.id !== id));
+      toast.success("Firmware deleted successfully!");
     } catch (error) {
       console.error("An error occured while deleting firmware.", error);
     }
@@ -102,18 +104,24 @@ const FirmwareList = () => {
     let deviceIdToFlash;
     if (flashType === 'ADB') {
       deviceIdToFlash = adbDeviceId;
-      await flashFirmware(deviceIdToFlash,firmwareId)
+      await flashFirmware(deviceIdToFlash, firmwareId)
+      if (deviceIdToFlash && (flashType === 'ADB' || flashType === 'FASTBOOT')) {
+        toast.success("Firmware flashed successfully!");
+      }
     } else if (flashType === 'FASTBOOT') {
       deviceIdToFlash = fastbootDeviceId;
-      await flashFastbootDevice(deviceIdToFlash,firmwareId,partitionOptions);
+      await flashFastbootDevice(deviceIdToFlash, firmwareId, partitionOptions);
+      if (deviceIdToFlash && (flashType === 'ADB' || flashType === 'FASTBOOT')) {
+        toast.success("Firmware flashed successfully!");
+      }
     };
 
     if (!deviceIdToFlash || flashType === '') {
-      alert("Please dont leave something empty.");
+      toast.error("Please do not leave anything empty.");
       return;
     };
     console.log(`Flashing firmware ${firmwareId} to device ${deviceIdToFlash} via ${flashType}`);
-   
+
   };
 
   useEffect(() => {
@@ -125,7 +133,7 @@ const FirmwareList = () => {
       setSelectedDeviceId('');
     }
   }, [flashType, adbDeviceId, fastbootDeviceId]);
-  
+
   return (
     <div className="flex flex-col md:flex-row min-h-screen">
       <Sidebar />
@@ -133,7 +141,7 @@ const FirmwareList = () => {
         <h1 className="text-4xl sm:text-5xl md:text-6xl text-center mb-12 font-extrabold tracking-tight bg-gradient-to-r from-purple-400 to-rose-500 text-transparent bg-clip-text">
           Firmware List
         </h1>
-  
+
         {firmwareList.length === 0 ? (
           <div className="text-center text-slate-400 text-lg">
             <p>No firmware's found.</p>
@@ -163,7 +171,7 @@ const FirmwareList = () => {
                           onClick={() => handleDelete(firmware.id)}
                           className="bg-rose-600 text-white rounded-md px-4 py-2 hover:bg-rose-700 transition-colors duration-200 shadow-md text-xs w-full"
                         >
-                          <Trash2Icon className='mx-auto'/>
+                          <Trash2Icon className='mx-auto' />
                         </button>
                         <button
                           onClick={() => handleDetails(firmware.id)}
@@ -173,9 +181,9 @@ const FirmwareList = () => {
                         </button>
                       </div>
                       <div className="flash flex flex-col my-4 gap-2 items-stretch">
-                        <select 
-                          className='border border-zinc-700 rounded-lg p-1 text-zinc-300 bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-purple-400' 
-                          value={flashType} 
+                        <select
+                          className='border border-zinc-700 rounded-lg p-1 text-zinc-300 bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-purple-400'
+                          value={flashType}
                           onChange={(e) => {
                             setFlashType(e.target.value);
                             setAdbDeviceId('');
@@ -186,11 +194,11 @@ const FirmwareList = () => {
                           <option value="ADB">ADB</option>
                           <option value="FASTBOOT">FASTBOOT</option>
                         </select>
-                        
+
                         {/* Conditionally render ADB or Fastboot device list */}
                         {flashType === 'ADB' && (
-                          <select 
-                            className='border border-zinc-700 rounded-lg p-1 text-zinc-300 bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-purple-400' 
+                          <select
+                            className='border border-zinc-700 rounded-lg p-1 text-zinc-300 bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-purple-400'
                             value={adbDeviceId}
                             onChange={(e) => setAdbDeviceId(e.target.value)}
                           >
@@ -206,8 +214,8 @@ const FirmwareList = () => {
 
                         {flashType === 'FASTBOOT' && (
                           <>
-                            <select 
-                              className='border border-zinc-700 rounded-lg p-1 text-zinc-300 bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-purple-400' 
+                            <select
+                              className='border border-zinc-700 rounded-lg p-1 text-zinc-300 bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-purple-400'
                               value={fastbootDeviceId}
                               onChange={(e) => setFastbootDeviceId(e.target.value)}
                             >
@@ -218,9 +226,9 @@ const FirmwareList = () => {
                                 </option>
                               ))}
                             </select>
-                            
-                            <select 
-                              className='border border-zinc-700 rounded-lg p-1 text-zinc-300 bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-purple-400' 
+
+                            <select
+                              className='border border-zinc-700 rounded-lg p-1 text-zinc-300 bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-purple-400'
                             >
                               <option value="" disabled>Select Partition</option>
                               {Array.isArray(partitionOptions) && partitionOptions.map((partition, index) => (
@@ -229,7 +237,7 @@ const FirmwareList = () => {
                             </select>
                           </>
                         )}
-                        
+
                         <button
                           onClick={() => handleFlash(firmware.id)}
                           className="bg-green-600 text-white rounded-md px-4 py-2 hover:bg-green-700 transition-colors duration-200 shadow-md text-xs md:mt-2 "
