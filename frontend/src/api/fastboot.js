@@ -85,4 +85,14 @@ const getPartitionOptions = async () => {
     }
 };
 
-export {scanDevices,fetchDevice,fetchAllDevices,getFastbootDeviceList,flashFastbootDevice,getPartitionOptions}
+const removePartition = async (device,partition) => {
+    try {
+        await axios.delete(`http://localhost:8080/fastboot/${device}/remoove/partition/${partition}`);
+    } catch (error) {
+        console.error("Something went wrong on removePartition func.");
+        return;
+    };
+};
+
+
+export {scanDevices,fetchDevice,fetchAllDevices,getFastbootDeviceList,flashFastbootDevice,getPartitionOptions,saveDevice,removePartition}
