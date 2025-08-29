@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { deleteFirmware, getAllFirmwares } from '../../api/firmware';
 import Sidebar from '../Sidebar';
 import { useNavigate } from 'react-router-dom';
-import { getDeviceList } from '../../api/adb';
+import { flashFirmware, getDeviceList } from '../../api/adb';
 import { flashFastbootDevice, getFastbootDeviceList, getPartitionOptions } from '../../api/fastboot';
-import axios from 'axios';
+import {Trash2Icon} from "lucide-react";
 
 
 const FirmwareList = () => {
@@ -72,7 +72,6 @@ const FirmwareList = () => {
     const fetchData = async () => {
       try {
         const res = await getPartitionOptions();
-        // API'den gelen verinin dizi olduğundan emin olun
         setPartitionOptions(Array.isArray(res) ? res : []);
       } catch (error) {
         console.error("Failed to fetch partition options:", error);
@@ -103,6 +102,7 @@ const FirmwareList = () => {
     let deviceIdToFlash;
     if (flashType === 'ADB') {
       deviceIdToFlash = adbDeviceId;
+      await flashFirmware(deviceIdToFlash,firmwareId)
     } else if (flashType === 'FASTBOOT') {
       deviceIdToFlash = fastbootDeviceId;
       await flashFastbootDevice(deviceIdToFlash,firmwareId,partitionOptions);
@@ -111,24 +111,11 @@ const FirmwareList = () => {
     if (!deviceIdToFlash || flashType === '') {
       alert("Please dont leave something empty.");
       return;
-    }
-
-    
-    
-    // This is where you would call your API to perform the flash operation.
+    };
     console.log(`Flashing firmware ${firmwareId} to device ${deviceIdToFlash} via ${flashType}`);
-    // Example API call (uncomment when your API function is ready):
-    // try {
-    //   const result = await flashFirmware(deviceIdToFlash, firmwareId, flashType);
-    //   console.log("Flash result:", result);
-    //   alert("Firmware flash successful!");
-    // } catch (error) {
-    //   console.error("Flash error:", error);
-    //   alert("Firmware flash failed. Check console for details.");
-    // }
+   
   };
 
-  // flashType ve selectedDeviceId'nin senkronize kalmasını sağlar
   useEffect(() => {
     if (flashType === 'ADB') {
       setSelectedDeviceId(adbDeviceId);
@@ -142,7 +129,7 @@ const FirmwareList = () => {
   return (
     <div className="flex flex-col md:flex-row min-h-screen">
       <Sidebar />
-      <div className="flex-1 py-16 px-4 md:px-16 bg-zinc-900 text-slate-100 font-sans">
+      <div className="flex-1 py-16 px-4 md:px-16 bg-zinc-900 text-slate-100 font-sans"> {/* min-h-screen eklenebilir. */}
         <h1 className="text-4xl sm:text-5xl md:text-6xl text-center mb-12 font-extrabold tracking-tight bg-gradient-to-r from-purple-400 to-rose-500 text-transparent bg-clip-text">
           Firmware List
         </h1>
@@ -174,9 +161,9 @@ const FirmwareList = () => {
                       <div className="actions flex flex-col gap-2">
                         <button
                           onClick={() => handleDelete(firmware.id)}
-                          className="bg-rose-600 text-white rounded-md px-4 py-2 hover:bg-rose-700 transition-colors duration-200 shadow-md text-xs"
+                          className="bg-rose-600 text-white rounded-md px-4 py-2 hover:bg-rose-700 transition-colors duration-200 shadow-md text-xs w-fit absolute left-4 top-20"
                         >
-                          Delete
+                          <Trash2Icon className='mx-auto'/>
                         </button>
                         <button
                           onClick={() => handleDetails(firmware.id)}
@@ -225,7 +212,6 @@ const FirmwareList = () => {
                               onChange={(e) => setFastbootDeviceId(e.target.value)}
                             >
                               <option value="" disabled>Select FASTBOOT device.</option>
-                              {/* Check if fastbootDeviceList is an array before mapping */}
                               {Array.isArray(fastbootDeviceList) && fastbootDeviceList.map((device) => (
                                 <option key={device.id} value={device.id}>
                                   {device.id}

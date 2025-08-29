@@ -9,11 +9,11 @@ const menuItems = {
   'ADB': [
     { name: 'Scan ADB Devices', href: '/adb/scanDevices' },
     { name: 'List ADB Devices', href: '/adb/devices/all' },
-    { name: 'ADB Flash', href: '/adb/flash' },
   ],
   'Fastboot': [
     { name: 'Scan Fastboot Devices', href: '/fastboot/scanDevices' },
     { name: 'List Fastboot Devices', href: '/fastboot/device/all' },
+    { name: 'Remove Partition', href: '/fastboot/removePartition' }
   ],
 };
 
