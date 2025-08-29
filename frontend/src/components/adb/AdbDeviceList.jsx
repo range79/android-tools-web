@@ -11,7 +11,7 @@ const AdbDeviceList = () => {
         const fetchData = async () => {
             try {
                 const res = await scanDevices();
-                setAdbDeviceList(res.data);
+                setAdbDeviceList(res);
             } catch (err) {
                 console.error("Fastboot fetch error:", err);
             }

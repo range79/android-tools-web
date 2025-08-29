@@ -4,7 +4,7 @@ import Sidebar from '../Sidebar';
 import { useNavigate } from 'react-router-dom';
 import { flashFirmware, getDeviceList } from '../../api/adb';
 import { flashFastbootDevice, getFastbootDeviceList, getPartitionOptions } from '../../api/fastboot';
-import { Trash2Icon } from "lucide-react";
+import { PlusIcon, Trash2Icon } from "lucide-react";
 import toast from "react-hot-toast";
 
 
@@ -252,6 +252,7 @@ const FirmwareList = () => {
             </table>
           </div>
         )}
+        <a href="http://localhost:5173/firmware/upload"><button className='absolute top-10 right-10 bg-green-600 p-3 rounded-lg hover:bg-green-700 transition duration-200 text-center items-center justify-center flex gap-1 hover:cursor-pointer'><PlusIcon/> Upload Firmware</button></a>
       </div>
     </div>
   );
