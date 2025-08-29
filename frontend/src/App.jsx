@@ -11,11 +11,13 @@ import FastbootAllDevices from './components/fastboot/FastbootAllDevices'
 import AdbAllDevices from './components/adb/AdbAllDevices'
 import "./App.css"
 import FastbootRemovePartition from './components/fastboot/FastbootRemovePartition'
+import { Toaster } from 'react-hot-toast'
 
 function App() {
 
   return (
     <>
+    <Toaster position='top-right'/>
         <Routes>
           <Route path='/' element={<FirmwareList />} />
           <Route path='/firmware/all' element={<FirmwareList />} />

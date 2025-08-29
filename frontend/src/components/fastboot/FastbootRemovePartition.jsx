@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Sidebar from '../Sidebar'
 import { getFastbootDeviceList, getPartitionOptions, removePartition } from '../../api/fastboot';
+import toast, { Toaster } from 'react-hot-toast';
 
 const FastbootRemovePartition = () => {
 
@@ -48,6 +49,7 @@ const FastbootRemovePartition = () => {
     };
     try {
       await removePartition(device,partition);
+      toast.success("Removed partition successfully.");
     } catch (error) {
       console.error("failed to remove partition.");
     };

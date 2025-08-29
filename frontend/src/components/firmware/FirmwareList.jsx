@@ -161,7 +161,7 @@ const FirmwareList = () => {
                       <div className="actions flex flex-col gap-2">
                         <button
                           onClick={() => handleDelete(firmware.id)}
-                          className="bg-rose-600 text-white rounded-md px-4 py-2 hover:bg-rose-700 transition-colors duration-200 shadow-md text-xs w-fit absolute left-4 top-20"
+                          className="bg-rose-600 text-white rounded-md px-4 py-2 hover:bg-rose-700 transition-colors duration-200 shadow-md text-xs w-full"
                         >
                           <Trash2Icon className='mx-auto'/>
                         </button>
