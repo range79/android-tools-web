@@ -65,7 +65,7 @@ const FastbootRemovePartition = () => {
             <div className="flex">
               <div className="flex flex-col items-center">
                 <label>Select Device :</label>
-                <select className='border border-zinc-700 py-1 px-2 rounded-lg my-2 text-slate-300' defaultValue={"x"} value={selectedDevice} onChange={(e) => handleSelectedDeviceChange(e)}>
+                <select className='border border-zinc-700 p-4 rounded-lg my-2 text-slate-300' defaultValue={"x"} value={selectedDevice} onChange={(e) => handleSelectedDeviceChange(e)}>
                   <option value="x" disabled>Select device.</option>
                   {Array.isArray(deviceList) && deviceList.map((device) => (
                     <option value={device} key={device}>{device}</option>
@@ -74,7 +74,7 @@ const FastbootRemovePartition = () => {
               </div>
               <div className="flex flex-col items-center ml-2">
                 <label>Select Partition :</label>
-                <select className='border border-zinc-700 py-1 px-2 rounded-lg my-2 text-slate-300' defaultValue={"x"} value={selectedPartition} onChange={(e) => handleSelectedPartitionChange(e)}>
+                <select className='border border-zinc-700 p-4 text-center rounded-lg my-2 text-slate-300' defaultValue={"x"} value={selectedPartition} onChange={(e) => handleSelectedPartitionChange(e)}>
                   <option value="x" disabled>Select partition.</option>
                   {Array.isArray(partitionList) && partitionList.map((partition) => (
                     <option value={partition} key={partition}>{partition}</option>
@@ -83,7 +83,7 @@ const FastbootRemovePartition = () => {
               </div>
             </div>
 
-            <button className='bg-rose-600 rounded-full py-1 px-2 w-fit mx-auto' onClick={() => handleRemove(selectedDevice,selectedPartition)}>Remove</button>
+            <button className='bg-rose-600 rounded-full py-2 px-3 w-fit mx-auto my-2' onClick={() => handleRemove(selectedDevice,selectedPartition)}>Remove</button>
 
           </div>
         </div>
