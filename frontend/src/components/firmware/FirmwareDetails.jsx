@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { deleteFirmware, getFirmwareDetails } from '../../api/firmware';
 import axios from 'axios';
 import Sidebar from '../Sidebar';
+import toast from 'react-hot-toast';
 
 const FirmwareDetails = () => {
   const { id } = useParams();
   const [firmware, setFirmware] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchFirmwareDetails = async () => {
@@ -35,12 +38,14 @@ const FirmwareDetails = () => {
       if (!res) {
         setError("Firmware not found");
       } else {
-        console.log("success");
+        toast.success("Firmware deleted successfully!");
       }
     } catch (err) {
       setError("Error deleting firmware.");
-    }
-  }
+    } finally {
+      navigate("/firmware/all");
+    };
+  };
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div style={{ color: 'red' }}>{error}</div>;

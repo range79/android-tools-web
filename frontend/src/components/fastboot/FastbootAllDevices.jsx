@@ -14,7 +14,7 @@ const AdbAllDevices = () => {
         const fetchData = async () => {
             const res = await fetchAllDevices(page);
             if (!res) {
-                console.error("ya donmedi amk");
+                console.error("Error fetching all devices at FastbootAllDevices.");
             } else if (res && res.content) {
                 setDevices(res.content);
                 if (res.page) {
