@@ -51,7 +51,6 @@ const AdbAllDevices = () => {
                                 <th className="px-4 py-3 text-start font-medium">id</th>
                                 <th className="px-4 py-3 text-start font-medium">serial</th>
                                 <th className="px-4 py-3 text-start font-medium">codename</th>
-                                <th className="px-4 py-3 text-start font-medium">unlocked</th>
                                 <th className="px-4 py-3 text-start font-medium">androidVersion</th>
                                 <th className="px-4 py-3 text-start font-medium">status</th>
                             </tr>
@@ -66,7 +65,6 @@ const AdbAllDevices = () => {
                                         <td className="px-4 py-3 text-zinc-300">{device.id}</td>
                                         <td className="px-4 py-3 text-zinc-300">{device.serial}</td>
                                         <td className="px-4 py-3 text-zinc-300">{device.codename}</td>
-                                        <td className="px-4 py-3 text-zinc-300">{device.unlocked ? 'true' : 'false'}</td>
                                         <td className="px-4 py-3 text-zinc-300">{device.androidVersion}</td>
                                         <td className="px-4 py-3 text-zinc-300">{device.status}</td>
                                     </tr>
