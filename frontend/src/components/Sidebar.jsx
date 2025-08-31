@@ -3,20 +3,20 @@ import React, { useState } from 'react';
 
 const menuItems = {
   'Firmware': [
-    { name: 'Firmware List', href: '/firmwares/all' },
-    { name: 'Upload Firmware', href: '/firmwares/upload' },
+    { name: 'Firmware List', href: '/firmware/all' },
+    { name: 'Upload Firmware', href: '/firmware/upload' },
   ],
   'ADB': [
-    { name: 'Scan ADB Devices', href: '/adb/scanDevice' },
-    { name: 'List ADB Devices', href: '/adb/allDevices' },
+    { name: 'Scan ADB Devices', href: '/adb/scanDevices' },
+    { name: 'List ADB Devices', href: '/adb/devices/all' },
   ],
   'Fastboot': [
-    { name: 'Scan Fastboot Devices', href: '/fastboots/scanDevices' },
-    { name: 'List Fastboot Devices', href: '/fastboots/device/all' },
-    { name: 'Remove Partition', href: '/fastboots/removePartition' }
+    { name: 'Scan Fastboot Devices', href: '/fastboot/scanDevices' },
+    { name: 'List Fastboot Devices', href: '/fastboot/device/all' },
+    { name: 'Remove Partition', href: '/fastboot/removePartition' }
   ],
   'Errors': [
-    { name: 'Error List', href: '/errors/list' }
+    { name: 'Error List', href: '/error/list' }
   ]
 };
 
