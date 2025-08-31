@@ -15,6 +15,9 @@ const menuItems = {
     { name: 'List Fastboot Devices', href: '/fastboot/device/all' },
     { name: 'Remove Partition', href: '/fastboot/removePartition' }
   ],
+  'Errors': [
+    { name: 'Error List', href: '/error/list' }
+  ]
 };
 
 const Sidebar = () => {
@@ -48,7 +51,7 @@ const Sidebar = () => {
         </svg>
       </button>
 
-      {/* Mobil menü açıkken tıklanabilir arka plan katmanı */}
+      
       <div
         onClick={() => setIsSidebarOpen(false)}
         className={`fixed inset-0 z-40 bg-black/50 md:hidden transition-opacity duration-300 ${
@@ -56,19 +59,19 @@ const Sidebar = () => {
         }`}
       />
 
-      {/* Yan menü bileşeni */}
+      
       <div
         className={`fixed inset-y-0 left-0 z-50 w-64 transform transition-transform duration-300 ease-in-out md:translate-x-0 md:static ${
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
         } bg-zinc-900 p-6 shadow-xl flex flex-col border-r`}
       >
         <div className="flex flex-col">
-          {/* Başlık */}
+          
           <h2 className="text-2xl font-bold mb-8 text-white text-center">
             Android Tools Web
           </h2>
 
-          {/* Menü Grupları ve Dropdownlar */}
+          
           <nav>
             <ul className="space-y-4">
               {Object.keys(menuItems).map((key) => (
@@ -94,7 +97,7 @@ const Sidebar = () => {
                     </svg>
                   </button>
 
-                  {/* Dropdown alt menüsü */}
+                  
                   <ul
                     className={`pl-4 mt-2 space-y-1 overflow-hidden transition-all duration-300 ${
                       openDropdown === key ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'

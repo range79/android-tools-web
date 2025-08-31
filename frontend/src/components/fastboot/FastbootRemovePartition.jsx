@@ -45,11 +45,13 @@ const FastbootRemovePartition = () => {
 
   const handleRemove = async (device,partition) => {
     if(selectedDevice === 0 || selectedPartition === '') {
-      alert("Please do not leave anything empty.");
+      toast.error("Please do not leave anything empty!");
     };
     try {
       await removePartition(device,partition);
-      toast.success("Removed partition successfully.");
+      if(selectedDevice != 0 && selectedPartition != '') {
+        toast.success("Removed partition successfully.");
+      };
     } catch (error) {
       console.error("failed to remove partition.");
     };
