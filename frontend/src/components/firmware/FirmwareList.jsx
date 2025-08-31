@@ -137,7 +137,7 @@ const FirmwareList = () => {
   return (
     <div className="flex flex-col md:flex-row min-h-screen">
       <Sidebar />
-      <div className="flex-1 py-16 px-4 md:px-16 bg-zinc-900 text-slate-100 font-sans"> {/* min-h-screen eklenebilir. */}
+      <div className="flex-1 py-16 px-4 md:px-16 bg-zinc-900 text-slate-100 font-sans"> 
         <h1 className="text-4xl sm:text-5xl md:text-6xl text-center mb-12 font-extrabold tracking-tight bg-gradient-to-r from-purple-400 to-rose-500 text-transparent bg-clip-text">
           Firmware List
         </h1>
