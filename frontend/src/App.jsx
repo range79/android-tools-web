@@ -21,16 +21,16 @@ function App() {
     <Toaster position='top-right'/>
         <Routes>
           <Route path='/' element={<FirmwareList />} />
-          <Route path='/firmware/all' element={<FirmwareList />} />
-          <Route path='/firmware/:id' element={<FirmwareDetails />} />
-          <Route path='/firmware/upload' element={<FirmwareUpload />} />
-          <Route path='/fastboot/scanDevices' element={<FastbootDeviceList />} />
-          <Route path='/fastboot/device/:id' element={<FastbootDeviceDetails />} />
-          <Route path='/fastboot/device/all' element={<FastbootAllDevices />} />
-          <Route path='/fastboot/removePartition' element={<FastbootRemovePartition />} />
-          <Route path='/adb/scanDevices' element={<AdbDeviceList />} />
-          <Route path='/adb/devices/all' element={<AdbAllDevices />} />
-          <Route path='/error/list' element={<ErrorList/>} />
+          <Route path='/firmwares/all' element={<FirmwareList />} />
+          <Route path='/firmwares/:id' element={<FirmwareDetails />} />
+          <Route path='/firmwares/upload' element={<FirmwareUpload />} />
+          <Route path='/fastboots/scanDevices' element={<FastbootDeviceList />} />
+          <Route path='/fastboots/device/:id' element={<FastbootDeviceDetails />} />
+          <Route path='/fastboots/device/all' element={<FastbootAllDevices />} />
+          <Route path='/fastboots/removePartition' element={<FastbootRemovePartition />} />
+          <Route path='/adb/scanDevice' element={<AdbDeviceList />} />
+          <Route path='/adb/allDevices' element={<AdbAllDevices />} />
+          <Route path='/errors/list' element={<ErrorList/>} />
           <Route path='*' element={<PageNotFound />} />
         </Routes>
     </div>
