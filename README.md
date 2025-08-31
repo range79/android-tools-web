@@ -1,10 +1,11 @@
 
 # 📱 android-tools-web
 
-![Kotlin](https://img.shields.io/badge/Kotlin-7F52FF?logo=kotlin&logoColor=white)
-![Spring Boot](https://img.shields.io/badge/Spring%20Boot-6DB33F?logo=spring-boot&logoColor=white)
-![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)
-
+![GitHub repo size](https://img.shields.io/github/repo-size/android-tools-web/jarvana?style=flat-square)
+![GitHub issues](https://img.shields.io/github/issues/android-tools-web/jarvana?style=flat-square)
+![GitHub license](https://img.shields.io/github/license/range79/android-tools-web?style=flat-square)
+![Kotlin](https://img.shields.io/badge/Kotlin-7F52FF?style=flat-square&logo=kotlin&logoColor=white)
+![Spring Boot](https://img.shields.io/badge/Spring_Boot-6DB33F?style=flat-square&logo=springboot&logoColor=white)
 ---
 
 ## 🚀 About the Project

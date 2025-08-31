@@ -6,8 +6,6 @@ import reactor.core.publisher.Flux
 
 @Component
 class WrapperUtil {
-    private val log = LoggerFactory.getLogger(WrapperUtil::class.java)
-    private val os = System.getProperty("os.name").lowercase()
     private val fastbootCommand = "fastboot"
     private val adbCommand = "adb"
 
