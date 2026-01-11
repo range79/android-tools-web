@@ -1,9 +1,9 @@
 plugins {
     id("org.jetbrains.kotlin.jvm") version "2.3.0"
-    id("org.jetbrains.kotlin.plugin.spring") version "1.9.25"
-    id("org.springframework.boot") version "3.5.3"
+    id("org.jetbrains.kotlin.plugin.spring") version "2.3.0"
+    id("org.springframework.boot") version "4.0.1"
     id("io.spring.dependency-management") version "1.1.7"
-    id("org.jetbrains.kotlin.plugin.jpa") version "2.2.20-Beta1"
+    id("org.jetbrains.kotlin.plugin.jpa") version "2.3.20-Beta1"
 }
 
 group = "com.range"
@@ -39,13 +39,13 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
 
     // OpenAPI / Swagger
-    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.9")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:3.0.1")
 
     // Tests
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
     testImplementation("io.projectreactor:reactor-test")
-    testImplementation("io.mockk:mockk:1.14.5")
+    testImplementation("io.mockk:mockk:1.14.7")
 
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
