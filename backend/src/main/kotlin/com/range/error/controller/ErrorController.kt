@@ -14,7 +14,7 @@ class ErrorController(
      return   ResponseEntity.ok().body(service.getErrors());
     }
 
-    override fun deleteErrors(): ResponseEntity<Unit?> {
+    override fun deleteErrors(): ResponseEntity<Unit> {
       return   ResponseEntity.ok().body(service.deleteErrors())
     }
 

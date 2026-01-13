@@ -11,5 +11,5 @@ interface ErrorApi {
     @GetMapping("/all")
     fun getErrors(): ResponseEntity<List<ErrorEntity>>
     @DeleteMapping("/all")
-    fun deleteErrors(): ResponseEntity<Unit?>
+    fun deleteErrors(): ResponseEntity<Unit>
 }
