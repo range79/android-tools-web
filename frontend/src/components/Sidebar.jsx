@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {href} from "react-router-dom";
 
 
 const menuItems = {
@@ -17,7 +18,12 @@ const menuItems = {
   ],
   'Errors': [
     { name: 'Error List', href: '/error/list' }
+  ],
+  'Backup':[
+    {name: 'Backup to pc', href: '/backup/local'},
+    {name: 'Backup to dropbox', href:'/backup/dropbox'}
   ]
+
 };
 
 const Sidebar = () => {

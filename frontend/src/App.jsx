@@ -8,17 +8,16 @@ import AdbDeviceList from './components/adb/AdbDeviceList'
 import FastbootDeviceDetails from './components/fastboot/FastbootDeviceDetails'
 import FastbootAllDevices from './components/fastboot/FastbootAllDevices'
 import AdbAllDevices from './components/adb/AdbAllDevices'
-import "./App.css"
 import FastbootRemovePartition from './components/fastboot/FastbootRemovePartition'
 import { Toaster } from 'react-hot-toast'
 import ErrorList from './components/errors/ErrorList'
 import PageNotFound from './components/PageNotFound'
+import BackupToLocal from './components/backup/BackupToLocal.jsx'
 
 function App() {
-
   return (
-    <div className='bg-zinc-900'>
-    <Toaster position='top-right'/>
+      <div className='bg-zinc-900 min-h-screen'>
+        <Toaster position='top-right' />
         <Routes>
           <Route path='/' element={<FirmwareList />} />
           <Route path='/firmware/all' element={<FirmwareList />} />
@@ -30,10 +29,11 @@ function App() {
           <Route path='/fastboot/removePartition' element={<FastbootRemovePartition />} />
           <Route path='/adb/scanDevices' element={<AdbDeviceList />} />
           <Route path='/adb/devices/all' element={<AdbAllDevices />} />
-          <Route path='/error/list' element={<ErrorList/>} />
+          <Route path='/error/list' element={<ErrorList />} />
+          <Route path='/backup/local' element={<BackupToLocal />} />
           <Route path='*' element={<PageNotFound />} />
         </Routes>
-    </div>
+      </div>
   )
 }
 
