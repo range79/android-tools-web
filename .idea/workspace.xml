@@ -4,18 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9d30ef4-e093-49c0-8063-07780e5a7d72" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/backup/domain/entity/FileEntity.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/backup/domain/entity/FileSaveType.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/backup/domain/repository/FileRepository.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/backup/dto/FileSaveResponse.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/backup/api/LocalFileSaveApi.kt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/backup/api/FileSaveApi.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/backup/controller/LocalFileSaveController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/backup/controller/FileSaveController.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/backup/service/LocalFileSaveService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/backup/service/FileSaveService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/backup/service/impl/LocalFileSaveServiceImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/backup/service/impl/FileSaveServiceImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/common/api/BaseSaveDevicesApi.kt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/common/api/BaseSaveDevicesApi.kt" afterDir="false" />
-    </list>
+    <list default="true" id="a9d30ef4-e093-49c0-8063-07780e5a7d72" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -195,7 +184,7 @@
       <workItem from="1768162252332" duration="5759000" />
       <workItem from="1768227742161" duration="3914000" />
       <workItem from="1768312382420" duration="369000" />
-      <workItem from="1768919285124" duration="8280000" />
+      <workItem from="1768919285124" duration="8601000" />
     </task>
     <servers />
   </component>
