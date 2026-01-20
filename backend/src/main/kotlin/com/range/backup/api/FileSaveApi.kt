@@ -1,5 +1,6 @@
 package com.range.backup.api
 
+import com.range.backup.dto.DropBoxFileSaveRequest
 import com.range.backup.dto.FileSaveResponse
 import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.PostMapping
@@ -14,5 +15,5 @@ interface FileSaveApi {
 
 
     @PostMapping("/dropBox")
-    fun saveDropBox(@RequestPart("file") dropBoxSaveRequest:): FileSaveResponse
+    fun saveDropBox(@RequestPart("file") dropBoxSaveRequest: DropBoxFileSaveRequest): FileSaveResponse
 }

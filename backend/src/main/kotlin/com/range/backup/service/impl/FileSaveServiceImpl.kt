@@ -17,14 +17,13 @@ import kotlin.io.path.Path
 
 @Service
 class FileSaveServiceImpl(private val fileRepository: FileRepository) : FileSaveService {
-@Value("\${save.path}")
-private lateinit var saveLocation: String
+    @Value("\${save.path}")
+    private lateinit var saveLocation: String
 
 
     override fun saveFileToLocal(multipartFile: MultipartFile): FileSaveResponse {
 
-        val originalFileName = multipartFile.originalFilename
-            ?: throw IllegalArgumentException("File name is null")
+        val originalFileName = multipartFile.originalFilename ?: throw IllegalArgumentException("File name is null")
 
         val safeFileName = Paths.get(originalFileName).fileName.toString()
 
@@ -50,7 +49,7 @@ private lateinit var saveLocation: String
 
     override fun saveToDropBox(dropBoxFileSaveRequest: DropBoxFileSaveRequest): FileSaveResponse {
 
-        val file =FileEntity(
+        val file = FileEntity(
             id = null,
             name = dropBoxFileSaveRequest.name,
             path = dropBoxFileSaveRequest.path,
@@ -60,15 +59,14 @@ private lateinit var saveLocation: String
         val saved = fileRepository.save(file)
         return saved.toResponse()
 
-
     }
 
 
-    fun FileEntity.toResponse(): FileSaveResponse{
+    fun FileEntity.toResponse(): FileSaveResponse {
         return FileSaveResponse(
             id = this.id,
             name = this.name,
-            path = this.path?:throw SavedFilePathNotFoundException(null),
+            path = this.path ?: throw SavedFilePathNotFoundException(null),
             fileSaveType = this.fileSaveType,
         )
     }
