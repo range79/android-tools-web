@@ -3,6 +3,7 @@ package com.range.backup.service.impl
 import com.range.backup.domain.entity.FileEntity
 import com.range.backup.domain.entity.FileSaveType
 import com.range.backup.domain.repository.FileRepository
+import com.range.backup.dto.DropBoxFileSaveRequest
 import com.range.backup.dto.FileSaveResponse
 import com.range.backup.exception.SavedFilePathNotFoundException
 import com.range.backup.service.FileSaveService
@@ -44,17 +45,33 @@ private lateinit var saveLocation: String
 
         val saved = fileRepository.save(fileEntity)
 
-        return FileSaveResponse(
-            id = saved.id,
-            name = saved.name,
-            path = saved.path?:throw SavedFilePathNotFoundException(null),
-            fileSaveType = saved.fileSaveType
+        return saved.toResponse()
+    }
+
+    override fun saveToDropBox(dropBoxFileSaveRequest: DropBoxFileSaveRequest): FileSaveResponse {
+
+        val file =FileEntity(
+            id = null,
+            name = dropBoxFileSaveRequest.name,
+            path = dropBoxFileSaveRequest.path,
+            fileSaveType = FileSaveType.DROPBOX,
+            size = dropBoxFileSaveRequest.size
         )
+        val saved = fileRepository.save(file)
+        return saved.toResponse()
+
+
     }
 
 
-
-
+    fun FileEntity.toResponse(): FileSaveResponse{
+        return FileSaveResponse(
+            id = this.id,
+            name = this.name,
+            path = this.path?:throw SavedFilePathNotFoundException(null),
+            fileSaveType = this.fileSaveType,
+        )
+    }
 
     fun resolveUniqueFileName(directory: Path, originalFileName: String): Path {
         val dotIndex = originalFileName.lastIndexOf('.')

@@ -11,4 +11,8 @@ interface FileSaveApi {
     @PostMapping("/local",
         consumes = [MediaType.MULTIPART_FORM_DATA_VALUE] )
     fun saveToLocal(@RequestPart file: MultipartFile): FileSaveResponse
+
+
+    @PostMapping("/dropBox")
+    fun saveDropBox(@RequestPart("file") dropBoxSaveRequest:): FileSaveResponse
 }
