@@ -5,16 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a9d30ef4-e093-49c0-8063-07780e5a7d72" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/backup/api/LocalFileSaveApi.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/backup/controller/LocalFileSaveController.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/backup/service/LocalFileSaveService.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/backup/service/impl/LocalFileSaveServiceImpl.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/backup/domain/entity/FileEntity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/backup/domain/entity/FileSaveType.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/backup/domain/repository/FileRepository.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/backup/dto/FileSaveResponse.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/backup/api/LocalFileSaveApi.kt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/backup/api/FileSaveApi.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/backup/controller/LocalFileSaveController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/backup/controller/FileSaveController.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/backup/service/LocalFileSaveService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/backup/service/FileSaveService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/backup/service/impl/LocalFileSaveServiceImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/backup/service/impl/FileSaveServiceImpl.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/common/api/BaseSaveDevicesApi.kt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/common/api/BaseSaveDevicesApi.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/common/api/CommonDevicesFetcherApi.kt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/common/api/CommonDevicesFetcherApi.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/common/service/base/DeviceServiceBase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/common/service/base/DeviceServiceBase.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/error/api/ErrorApi.kt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/error/api/ErrorApi.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/error/controller/ErrorController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/kotlin/com/range/error/controller/ErrorController.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,6 +117,14 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CreateKotlinClassDialog.RecentsKey">
+      <recent name="com.range.backup.dto" />
+    </key>
+    <key name="K2MoveDeclarationsDialog.RECENT_PACKAGE_KEY">
+      <recent name="com.range.backup.domain.entity" />
+    </key>
+  </component>
   <component name="RunManager" selected="Spring Boot.FastbootApplication">
     <configuration name="backend" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
@@ -154,14 +162,6 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-30f59d01ecdd-26cb7f24e5b0-intellij.indexing.shared.core-IU-253.29346.240" />
-        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-IU-253.29346.240" />
-      </set>
-    </attachedChunks>
-  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="a9d30ef4-e093-49c0-8063-07780e5a7d72" name="Changes" comment="" />
@@ -194,6 +194,8 @@
       <workItem from="1768148902535" duration="2070000" />
       <workItem from="1768162252332" duration="5759000" />
       <workItem from="1768227742161" duration="3914000" />
+      <workItem from="1768312382420" duration="369000" />
+      <workItem from="1768919285124" duration="8280000" />
     </task>
     <servers />
   </component>
