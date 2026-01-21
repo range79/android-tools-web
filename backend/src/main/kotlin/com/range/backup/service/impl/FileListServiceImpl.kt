@@ -14,7 +14,7 @@ class FileListServiceImpl(
     private val fileRepository: FileRepository,
     private val fileMapper: FileMapper
 ): FileListService {
-    override fun listFiles(
+    override fun listFilesBySaveType(
         fileSaveType: FileSaveType,
         pageable: Pageable
     ): Page<FileSaveResponse> {
