@@ -5,7 +5,7 @@ import com.range.backup.domain.entity.FileSaveType
 import com.range.backup.domain.repository.FileRepository
 import com.range.backup.dto.DropBoxFileSaveRequest
 import com.range.backup.dto.FileSaveResponse
-import com.range.backup.exception.SavedFilePathNotFoundException
+import com.range.backup.mapper.FileMapper
 import com.range.backup.service.FileSaveService
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Service
@@ -15,7 +15,10 @@ import java.nio.file.Path
 import java.nio.file.Paths
 
 @Service
-class FileSaveServiceImpl(private val fileRepository: FileRepository) : FileSaveService {
+class FileSaveServiceImpl(
+    private val fileRepository: FileRepository,
+    private val fileMapper: FileMapper
+) : FileSaveService {
 
     @Value("\${save.path}")
     private lateinit var saveLocation: String
@@ -48,7 +51,7 @@ class FileSaveServiceImpl(private val fileRepository: FileRepository) : FileSave
         )
 
         val saved = fileRepository.save(fileEntity)
-        return saved.toResponse()
+        return fileMapper.toResponse(saved)
     }
 
     override fun saveToDropBox(dropBoxFileSaveRequest: DropBoxFileSaveRequest): FileSaveResponse {
@@ -61,17 +64,9 @@ class FileSaveServiceImpl(private val fileRepository: FileRepository) : FileSave
         )
 
         val saved = fileRepository.save(fileEntity)
-        return saved.toResponse()
+        return fileMapper.toResponse(saved)
     }
 
-    private fun FileEntity.toResponse(): FileSaveResponse {
-        return FileSaveResponse(
-            id = this.id,
-            name = this.name,
-            path = this.path ?: throw SavedFilePathNotFoundException(null),
-            fileSaveType = this.fileSaveType
-        )
-    }
 
     private fun resolveUniqueFileName(directory: Path, originalFileName: String): Path {
         val dotIndex = originalFileName.lastIndexOf('.')
