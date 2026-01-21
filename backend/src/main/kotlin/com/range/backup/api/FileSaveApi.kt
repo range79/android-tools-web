@@ -1,16 +1,17 @@
 package com.range.backup.api
 
+import com.range.backup.dto.DropBoxFileSaveRequest
+import com.range.backup.dto.FileSaveResponse
 import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestPart
 import org.springframework.web.multipart.MultipartFile
 @RequestMapping("/backup")
-interface LocalFileSaveApi {
+interface FileSaveApi {
     @PostMapping("/local",
         consumes = [MediaType.MULTIPART_FORM_DATA_VALUE] )
-    fun saveToLocal(@RequestPart file: MultipartFile)
-    @PostMapping("/dropbox"
-        , consumes = [MediaType.MULTIPART_FORM_DATA_VALUE])
-        fun saveToDropBox(@RequestPart file: MultipartFile)
+    fun saveToLocal(@RequestPart file: MultipartFile): FileSaveResponse
+    @PostMapping("/dropBox")
+    fun saveDropBox(@RequestPart("file") dropBoxSaveRequest: DropBoxFileSaveRequest): FileSaveResponse
 }

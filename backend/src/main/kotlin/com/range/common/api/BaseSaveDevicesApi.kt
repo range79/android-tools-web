@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 
-interface BaseSaveDevicesApi <T>{
+interface BaseSaveDevicesApi <T: Any>{
     @GetMapping("/scanDevices")
     fun scanDevices() : ResponseEntity<List<String>>
     @PostMapping("/saveDevice/{id}")
-    fun saveDevice(@PathVariable id:String): ResponseEntity<AdbDeviceResponseDto>
+    fun saveDevice(@PathVariable id:String): ResponseEntity<T>
 }
