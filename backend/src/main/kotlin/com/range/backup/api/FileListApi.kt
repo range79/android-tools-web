@@ -16,6 +16,6 @@ interface FileListApi {
         pageable: Pageable
     ): Page<FileSaveResponse>
 
-    @GetMapping("/list")
+    @GetMapping("/list/all")
     fun listAllFile(pageable: Pageable): Page<FileSaveResponse>
 }
