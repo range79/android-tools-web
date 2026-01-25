@@ -16,7 +16,7 @@
     "react": "^19.1.1",
     "react-dom": "^19.2.3",
     "react-hot-toast": "^2.6.0",
-    "react-router-dom": "^7.12.0",
+    "react-router-dom": "^7.13.0",
     "tailwindcss": "^4.1.12",
     "use-query-params": "^2.2.2"
   },
