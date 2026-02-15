@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Android Tools Web | Device Management</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        android: '#3DDC84',
+                        dark: '#0A0A0A',
+                        card: 'rgba(255, 255, 255, 0.05)',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-dark text-gray-100 font-sans min-h-screen selection:bg-android selection:text-dark">
+
+    <div class="fixed inset-0 overflow-hidden pointer-events-none -z-10">
+        <div class="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] bg-android/10 blur-[120px] rounded-full"></div>
+        <div class="absolute -bottom-[10%] -right-[10%] w-[40%] h-[40%] bg-blue-500/10 blur-[120px] rounded-full"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 py-8">
+        <header class="flex justify-between items-center mb-12 animate-fade-in">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 bg-android rounded-xl flex items-center justify-center">
+                    <svg class="w-6 h-6 text-dark" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M17.523 15.3414C18.2325 15.3414 18.8077 14.7663 18.8077 14.0567C18.8077 13.347 18.2325 12.7719 17.523 12.7719C16.8134 12.7719 16.2383 13.347 16.2383 14.0567C16.2383 14.7663 16.8134 15.3414 17.523 15.3414ZM6.47644 15.3414C7.18608 15.3414 7.76121 14.7663 7.76121 14.0567C7.76121 13.347 7.18608 12.7719 6.47644 12.7719C5.76681 12.7719 5.19168 13.347 5.19168 14.0567C5.19168 14.7663 5.76681 15.3414 6.47644 15.3414ZM17.8596 10.147L19.8242 6.74609C19.9572 6.5159 19.8781 6.22159 19.6479 6.08865C19.4177 5.9557 19.1235 6.03477 18.9905 6.26496L17.0016 9.69994C15.6565 8.9566 14.0371 8.52734 12.28 8.52734C10.5229 8.52734 8.90349 8.9566 7.55837 9.69994L5.56948 6.26496C5.43654 6.03477 5.14223 5.9557 4.91204 6.08865C4.68185 6.22159 4.60278 6.5159 4.73573 6.74609L6.70037 10.147C3.39162 11.9407 1.25 15.4227 1.25 19.4141H23.31C23.3101 15.4227 21.1684 11.9407 17.8596 10.147Z" />
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-2xl font-bold tracking-tight">Android Tools</h1>
+                    <p class="text-gray-400 text-sm">Project Management Center</p>
+                </div>
+            </div>
+
+            <nav class="hidden md:flex bg-white/5 border border-white/10 rounded-2xl p-1 p-1">
+                <button onclick="switchTab('dashboard')"
+                    class="tab-btn active px-6 py-2 rounded-xl text-sm font-medium transition-all"
+                    data-tab="dashboard">Dashboard</button>
+                <button onclick="switchTab('firmware')"
+                    class="tab-btn px-6 py-2 rounded-xl text-sm font-medium transition-all text-gray-400 hover:text-white"
+                    data-tab="firmware">Firmware</button>
+                <button onclick="switchTab('flasher')"
+                    class="tab-btn px-6 py-2 rounded-xl text-sm font-medium transition-all text-gray-400 hover:text-white"
+                    data-tab="flasher">Flasher</button>
+                <button onclick="switchTab('maintenance')"
+                    class="tab-btn px-6 py-2 rounded-xl text-sm font-medium transition-all text-gray-400 hover:text-white"
+                    data-tab="maintenance">Maintenance</button>
+            </nav>
+
+            <div class="flex items-center space-x-4">
+                <span id="backendStatus"
+                    class="flex items-center space-x-2 px-3 py-1 bg-red-500/10 text-red-400 rounded-full text-xs font-medium border border-red-500/20">
+                    <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+                    <span>Backend Disconnected</span>
+                </span>
+            </div>
+        </header>
+
+        <div id="tab-dashboard" class="tab-content">
+            <main class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <div class="lg:col-span-4 space-y-6">
+                    <div
+                        class="bg-card border border-white/10 p-6 rounded-3xl backdrop-blur-xl hover:border-android/30 transition-all duration-300">
+                        <h2 class="text-lg font-semibold mb-4 flex items-center">
+                            <svg class="w-5 h-5 mr-2 text-android" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z">
+                                </path>
+                            </svg>
+                            Device List
+                        </h2>
+                        <div id="deviceList" class="space-y-3">
+                            <div class="text-center py-8 text-gray-500 italic text-sm">Searching for devices...</div>
+                        </div>
+                        <button onclick="refreshDevices()"
+                            class="w-full mt-4 py-3 bg-android/10 hover:bg-android/20 text-android border border-android/30 rounded-2xl text-sm font-medium transition-all">
+                            Refresh
+                        </button>
+                    </div>
+
+                    <div class="bg-card border border-white/10 p-6 rounded-3xl backdrop-blur-xl">
+                        <h2 class="text-lg font-semibold mb-4">Quick Actions</h2>
+                        <div class="grid grid-cols-2 gap-3">
+                            <button onclick="sendCommand('reboot')"
+                                class="p-4 bg-white/5 hover:bg-white/10 rounded-2xl border border-white/10 transition-all text-xs">Reboot</button>
+                            <button onclick="sendCommand('reboot-bootloader')"
+                                class="p-4 bg-white/5 hover:bg-white/10 rounded-2xl border border-white/10 transition-all text-xs">Fastboot</button>
+                            <button onclick="sendCommand('reboot-recovery')"
+                                class="p-4 bg-white/5 hover:bg-white/10 rounded-2xl border border-white/10 transition-all text-xs">Recovery</button>
+                            <button onclick="sendCommand('adb-reboot-fastboot')"
+                                class="p-4 bg-white/5 hover:bg-white/10 rounded-2xl border border-white/10 transition-all text-xs">Adb-Fastboot</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-8">
+                    <div class="bg-dark/50 border border-white/10 rounded-3xl overflow-hidden h-[500px] flex flex-col">
+                        <div
+                            class="bg-white/5 p-3 border-b border-white/10 flex justify-between items-center text-xs text-gray-400">
+                            <span>Console</span>
+                            <button onclick="clearConsole()" class="hover:text-android">Clear</button>
+                        </div>
+                        <div id="consoleOutput" class="flex-grow p-4 font-mono text-sm overflow-y-auto space-y-1"></div>
+                        <div class="p-4 border-t border-white/10">
+                            <input id="commandInput" type="text" placeholder="Manual command..."
+                                class="w-full bg-transparent border-none focus:ring-0 text-sm font-mono">
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <div id="tab-firmware" class="tab-content hidden h-[600px] animate-fade-in">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 h-full">
+                <div
+                    class="bg-card border border-white/10 p-8 rounded-3xl flex flex-col items-center justify-center border-dashed hover:border-android/50 transition-all group">
+                    <div
+                        class="w-16 h-16 bg-android/10 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <svg class="w-8 h-8 text-android" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Upload ROM/Recovery</h3>
+                    <p class="text-gray-400 text-sm text-center mb-6">Drag and drop files or click to select</p>
+                    <input type="file" id="firmwareFile" class="hidden">
+                    <button onclick="document.getElementById('firmwareFile').click()"
+                        class="px-8 py-3 bg-android text-dark font-bold rounded-2xl hover:shadow-lg hover:shadow-android/20 transition-all">Select
+                        File</button>
+                    <div id="uploadProgress" class="w-full mt-6 hidden">
+                        <div class="h-1 bg-white/10 rounded-full overflow-hidden">
+                            <div id="progressBar" class="h-full bg-android w-0 transition-all"></div>
+                        </div>
+                        <p id="progressText" class="text-[10px] text-center mt-2 text-gray-500">Preparing...</p>
+                    </div>
+                </div>
+                <div class="bg-card border border-white/10 p-6 rounded-3xl overflow-hidden flex flex-col">
+                    <h3 class="text-lg font-semibold mb-4">Available Firmware</h3>
+                    <div id="firmwareList" class="space-y-3 overflow-y-auto flex-grow pr-2">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="tab-flasher" class="tab-content hidden animate-fade-in">
+            <div class="bg-card border border-white/10 p-8 rounded-3xl max-w-2xl mx-auto">
+                <h3 class="text-xl font-bold mb-6 text-center">Firmware Flashing Wizard</h3>
+                <div class="space-y-6">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-500 uppercase mb-2">1. Target Device</label>
+                        <select id="flashTargetDevice"
+                            class="w-full bg-white/5 border border-white/10 rounded-xl p-3 focus:outline-none focus:border-android/50 transition-all"></select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-500 uppercase mb-2">2. Firmware File</label>
+                        <select id="flashFirmwareFile"
+                            class="w-full bg-white/5 border border-white/10 rounded-xl p-3 focus:outline-none focus:border-android/50 transition-all"></select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-500 uppercase mb-2">3. Partition (Fastboot
+                            Only)</label>
+                        <select id="flashPartition"
+                            class="w-full bg-white/5 border border-white/10 rounded-xl p-3 focus:outline-none focus:border-android/50 transition-all">
+                            <option value="none">Automatic / ROM</option>
+                            <option value="recovery">Recovery</option>
+                            <option value="boot">Boot</option>
+                            <option value="system">System</option>
+                        </select>
+                    </div>
+                    <button onclick="startFlashing()"
+                        class="w-full py-4 bg-android text-dark font-black rounded-2xl hover:shadow-xl hover:shadow-android/30 transition-all transform active:scale-[0.98]">
+                        START FLASHING
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="bg-card border border-white/10 p-6 rounded-3xl">
+                <h3 class="text-lg font-semibold mb-4">Backup</h3>
+                <div class="space-y-3">
+                    <button onclick="triggerBackup('local')"
+                        class="w-full p-4 bg-white/5 hover:bg-white/10 rounded-2xl border border-white/10 flex items-center justify-between transition-all">
+                        <span>Local Backup</span>
+                        <svg class="w-5 h-5 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4">
+                            </path>
+                        </svg>
+                    </button>
+                    <button onclick="triggerBackup('dropbox')"
+                        class="w-full p-4 bg-white/5 hover:bg-white/10 rounded-2xl border border-white/10 flex items-center justify-between transition-all">
+                        <span>Dropbox Backup</span>
+                        <svg class="w-5 h-5 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 3L4 9l8 6 8-6-8-6zm0 18l-8-6 8-6 8 6-8 6z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="bg-card border border-white/10 p-6 rounded-3xl">
+                <h3 class="text-lg font-semibold mb-4">Partition Management</h3>
+                <div class="space-y-3">
+                    <input id="partitionName" type="text" placeholder="Partition name (e.g. userdata)"
+                        class="w-full bg-white/5 border border-white/10 rounded-xl p-3 text-sm mb-2">
+                    <button onclick="removePartition()"
+                        class="w-full p-4 bg-red-500/10 hover:bg-red-500/20 text-red-400 rounded-2xl border border-red-500/20 transition-all font-bold">
+                        DELETE PARTITION
+                    </button>
+                </div>
+            </div>
+            <div class="bg-card border border-white/10 p-6 rounded-3xl">
+                <h3 class="text-lg font-semibold mb-4">System Logs</h3>
+                <div id="errorSummary" class="text-sm text-gray-500 space-y-2 mb-4">
+                    Loading error logs...
+                </div>
+                <button onclick="clearSystemErrors()"
+                    class="w-full py-2 text-xs text-gray-500 hover:text-red-400 transition-colors uppercase font-bold tracking-widest">Clear
+                    All Logs</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="mt-12 pt-8 border-t border-white/5 text-center text-gray-500 text-xs">
+        <p>&copy; 2024 Android Tools Web Interface. <span class="text-android/50">Full API Integrated.</span></p>
+    </footer>
+    </div>
+
+    <script src="/js/app.js"></script>
+</body>
+
+</html>
